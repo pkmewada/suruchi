@@ -1,10 +1,10 @@
 /* -------------------------------------------------------
  
  Theme Name: Suruchi Creation
- Theme URL: https://craftohtml.themezaa.com/
+ Theme URL: https://craftohtml.Mqlus.com/
  Description: Elevate your online presence with Crafto - a modern, versatile, multipurpose Bootstrap 5 responsive HTML5, SCSS template using highly creative 60+ ready demos.
- Author: ThemeZaa - https://www.themezaa.com/
- Copyright(c) 2026 themezaa.com
+ Author: Mqlus - https://www.Mqlus.com/
+ Copyright(c) 2026 Mqlus.com
  Version: 4.0
  
  ------------------------------------------------------- */
