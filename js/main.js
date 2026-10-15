@@ -9,6 +9,28 @@
  
  ------------------------------------------------------- */
 
+function renderFeatherIcons(root) {
+   if (!window.feather) {
+       return;
+   }
+
+   root.querySelectorAll('i[class*="icon-feather-"], svg[class*="icon-feather-"]').forEach(function (icon) {
+       var iconClass = Array.from(icon.classList).find(function (className) {
+           return className.indexOf('icon-feather-') === 0;
+       });
+       var iconDefinition = iconClass && window.feather.icons[iconClass.slice(13)];
+
+       if (iconDefinition) {
+           icon.outerHTML = iconDefinition.toSvg({
+               class: icon.getAttribute('class'),
+               'aria-hidden': 'true'
+           });
+       }
+   });
+}
+
+renderFeatherIcons(document);
+
 (function ($) {
 
     "use strict";
@@ -950,11 +972,13 @@
         $('.collapse', this).on('show.bs.collapse', function () {
             var id = $(this).attr('id');
             $('a[data-bs-target="#' + id + '"]').closest('.accordion-header').parent('.accordion-item').addClass('active-accordion');
-            $('a[data-bs-target="#' + id + '"] i').addClass(activeIconClass).removeClass(inactiveIconClass);
+            $('a[data-bs-target="#' + id + '"] i, a[data-bs-target="#' + id + '"] svg.feather').addClass(activeIconClass).removeClass(inactiveIconClass);
+            renderFeatherIcons(document);
         }).on('hide.bs.collapse', function () {
             var id = $(this).attr('id');
             $('a[data-bs-target="#' + id + '"]').closest('.accordion-header').parent('.accordion-item').removeClass('active-accordion');
-            $('a[data-bs-target="#' + id + '"] i').addClass(inactiveIconClass).removeClass(activeIconClass);
+            $('a[data-bs-target="#' + id + '"] i, a[data-bs-target="#' + id + '"] svg.feather').addClass(inactiveIconClass).removeClass(activeIconClass);
+            renderFeatherIcons(document);
         });
     });
 

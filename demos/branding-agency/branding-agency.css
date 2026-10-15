@@ -33,6 +33,11 @@ h4 {
     font-size: 18px;
     font-weight: 600;
 }
+svg.feather.icon-feather {
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.125em;
+}
 header .header-button .btn.btn-switch-text.btn-medium > span {
     padding: 12px 22px;
 }
