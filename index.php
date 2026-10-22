@@ -1,95 +1,6 @@
-<!doctype html>
-<html class="no-js" lang="en">
+<?php include 'includes/header.php'; ?>
 
-<head>
-    <title>Suruchi Creation</title>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="author" content="Mqlus">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-    <meta name="description"
-        content="Elevate your online presence with Crafto - a modern, versatile, multipurpose Bootstrap 5 responsive HTML5, SCSS template using highly creative 60+ ready demos.">
-    <!-- favicon icon -->
-    <link rel="shortcut icon" href="images/logo.jpg">
-    <!-- google fonts preconnect -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- style sheets and font icons  -->
-    <link rel="stylesheet" href="css/vendors.min.css?v=20261015" />
-    <link rel="stylesheet" href="css/icon.min.css?v=20261015" />
-    <link rel="stylesheet" href="css/style.min.css?v=20261015" />
-    <link rel="stylesheet" href="css/responsive.min.css?v=20261015" />
-    <link rel="stylesheet" href="demos/branding-agency/branding-agency.css?v=20261015" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-</head>
 
-<body data-mobile-nav-trigger-alignment="right" data-mobile-nav-style="modern" data-mobile-nav-bg-color="#1d1d1d">
-    <!-- start header -->
-    <header>
-        <!-- start navigation -->
-        <nav class="navbar navbar-expand-lg header-light bg-white header-reverse glass-effect">
-            <div class="container-fluid">
-                <div class="col-auto col-lg-2 me-lg-0 me-auto">
-                    <a class="navbar-brand" href="index.html">
-                        <img src="images/logo.jpg" data-at2x="images/logo.jpg" alt="" class="default-logo">
-                        <img src="images/logo.jpg" data-at2x="images/logo.jpg" alt="" class="alt-logo">
-                        <img src="images/logo.jpg" data-at2x="images/logo.jpg" alt="" class="mobile-logo">
-                    </a>
-                </div>
-                <div class="col-auto ms-auto md-ms-0 menu-order position-static">
-                    <button class="navbar-toggler float-start" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarNav" aria-controls="navbarNav" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-line"></span>
-                        <span class="navbar-toggler-line"></span>
-                        <span class="navbar-toggler-line"></span>
-                        <span class="navbar-toggler-line"></span>
-                    </button>
-                    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-                        <ul class="navbar-nav alt-font">
-                            <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-                            <li class="nav-item"><a href="demo-branding-agency-about.html" class="nav-link">About us</a>
-                            </li>
-                            <li class="nav-item dropdown dropdown-with-icon-style02">
-                                <a href="demo-branding-agency-services.html" class="nav-link">Services</a>
-                                <i class="fa-solid fa-angle-down dropdown-toggle" id="navbarDropdownMenuLink"
-                                    role="button" data-bs-toggle="dropdown" aria-expanded="false"></i>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                    <li><a href="demo-branding-agency-services.html"><i
-                                                class="bi bi-megaphone text-dark-gray"></i>Branding solutions</a></li>
-                                    <li><a href="demo-branding-agency-services.html"><i
-                                                class="bi bi-vector-pen text-dark-gray"></i>Design research</a></li>
-                                    <li><a href="demo-branding-agency-services.html"><i
-                                                class="bi bi-laptop text-dark-gray"></i>Web development</a></li>
-                                    <li><a href="demo-branding-agency-services.html"><i
-                                                class="bi bi-bag-heart text-dark-gray"></i>eCommerce solutions</a></li>
-                                </ul>
-                            </li>
-                            <li class="nav-item"><a href="demo-branding-agency-portfolio.html"
-                                    class="nav-link">Portfolio</a></li>
-                            <li class="nav-item"><a href="demo-branding-agency-contact.html"
-                                    class="nav-link">Contact</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-auto text-end d-none d-sm-flex">
-                    <div class="header-icon">
-                        <div class="header-button">
-                            <a href="demo-branding-agency-contact.html"
-                                class="btn border-1 btn-transparent-light-gray btn-medium left-icon btn-switch-text">
-                                <span>
-                                    <span><i class="fa-regular fa-envelope"></i></span>
-                                    <span class="btn-double-text" data-text="Send a message">Send a message</span>
-                                </span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </nav>
-        <!-- end navigation -->
-    </header>
-    <!-- end header -->
     <!-- start banner -->
     <section class="p-0 full-screen ipad-top-space-margin position-relative overflow-hidden md-h-auto">
         <div class="container-fluid p-0 h-100 position-relative">
@@ -163,6 +74,9 @@
         </div>
     </section>
     <!-- end banner -->
+
+
+
     <!-- start section -->
     <section>
         <div class="container">
@@ -196,6 +110,9 @@
         </div>
     </section>
     <!-- end section -->
+
+
+
     <!-- start section -->
     <section class="pt-0">
         <div class="container">
@@ -254,6 +171,9 @@
         </div>
     </section>
     <!-- end section -->
+
+
+
     <!-- start section -->
     <section class="pt-0 border-top border-color-extra-medium-gray mt-6 md-mt-0 sm-border-top-0">
         <div class="container">
@@ -311,6 +231,9 @@
         </div>
     </section>
     <!-- end section -->
+
+
+
     <!-- start section -->
     <section class="overflow-hidden position-relative pt-0 lg-pb-0">
         <div class="container-fluid">
@@ -339,6 +262,8 @@
         </div>
     </section>
     <!-- end section -->
+
+
     <!-- start section -->
     <section class="stack-box py-0 z-index-99">
         <div class="stack-box-contain">
@@ -480,6 +405,8 @@
         </div>
     </section>
     <!-- end section -->
+
+
     <!-- start section -->
     <section class="pb-0">
         <div class="container">
@@ -607,6 +534,8 @@
         </div>
     </section>
     <!-- end section -->
+
+
     <!-- start section -->
     <section class="pb-0">
         <div class="container-fluid p-0">
@@ -698,6 +627,8 @@
         </div>
     </section>
     <!-- end section -->
+
+
     <!-- start section -->
     <section class="big-section position-relative">
         <div class="background-position-center-top background-no-repeat position-absolute h-100 w-100 left-0px top-0px"
@@ -788,79 +719,6 @@
         </div>
     </section>
     <!-- end section -->
-    <!-- start footer -->
-    <footer class="bg-charcoal-blue pb-4 sm-pb-50px">
-        <div class="container">
-            <div class="row mb-6">
-                <div class="col-lg-5 col-md-6 sm-mb-30px order-2 order-md-1">
-                    <h3 class="text-white fw-500 alt-font mb-50px ls-minus-1px sm-mb-30px">Let's make something great
-                        work together.</h3>
-                    <div class="row">
-                        <div class="col-lg-5 col-6">
-                            <span class="alt-font fs-14 text-uppercase d-block text-white ls-1px lh-24">Call our
-                                office</span>
-                            <a href="tel:12345678910">+1 234 567 8910</a>
-                        </div>
-                        <div class="col-lg-5 col-6">
-                            <span class="alt-font fs-14 text-uppercase d-block text-white ls-1px lh-24">Send a
-                                message</span>
-                            <a href="demo-branding-agency-contact.html">Contact us</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-2 offset-lg-1 col-6 order-3 order-md-2">
-                    <span class="alt-font fs-14 text-uppercase mb-5px d-block text-white ls-1px">Company</span>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="demo-branding-agency-about.html">About us</a></li>
-                        <li><a href="demo-branding-agency-services.html">Services</a></li>
-                        <li><a href="demo-branding-agency-portfolio.html">Portfolio</a></li>
-                        <li><a href="demo-branding-agency-contact.html">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-2 col-6 order-3 order-md-3">
-                    <span class="alt-font fs-14 text-uppercase mb-5px d-block text-white ls-1px">Follow Us</span>
-                    <ul>
-                        <li><a href="https://www.pinterest.com/" target="_blank">Pinterest</a></li>
-                        <li><a href="https://www.twitter.com" target="_blank">Twitter</a></li>
-                        <li><a href="http://www.dribbble.com" target="_blank">Dribbble</a></li>
-                        <li><a href="https://www.instagram.com" target="_blank">Instagram</a></li>
-                        <li><a href="http://www.behance.com" target="_blank">Behance</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-2 order-1 order-md-4 sm-mb-30px">
-                    <a href="index.html" class="footer-logo"><img
-                            src="images/logo.jpg"
-                            data-at2x="images/logo.jpg" alt="Suruchi Creation"></a>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-7 last-paragraph-no-margin">
-                    <p class="fs-13 lh-22 w-95 sm-w-100">This site is protected by reCAPTCHA and the Google privacy
-                        policy and terms of service apply. You must not use this website if you disagree with any of
-                        these website standard terms and conditions.</p>
-                </div>
-                <div class="col-md-5 text-md-end sm-mt-15px last-paragraph-no-margin">
-                    <p class="fs-13 lh-22">&copy; 2026 Crafto is Powered by <a href="https://www.Mqlus.com/"
-                            target="_blank" class="text-decoration-line-bottom text-white">Mqlus</a></p>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <!-- end footer -->
-    <!-- start scroll progress -->
-    <div class="scroll-progress d-none d-xxl-block">
-        <a href="#" class="scroll-top" aria-label="scroll">
-            <span class="scroll-text">Scroll</span><span class="scroll-line"><span class="scroll-point"></span></span>
-        </a>
-    </div>
-    <!-- end scroll progress -->
-    <!-- javascript libraries -->
-    <script type="text/javascript" src="js/jquery.js"></script>
-    <script type="text/javascript" src="js/vendors.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.29.2/dist/feather.min.js"></script>
-    <script type="text/javascript" src="js/main.js?v=20261015"></script>
 
-</body>
 
-</html>
+   <?php include 'includes/footer.php'; ?>
