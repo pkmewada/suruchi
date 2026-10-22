@@ -175,10 +175,10 @@
 
 
     <!-- start section -->
-    <section class="pt-0 border-top border-color-extra-medium-gray mt-6 md-mt-0 sm-border-top-0">
+    <section class="pt-0 border-top border-color-extra-medium-gray mt-6 md-mt-0 sm-border-top-0 process-steps-marquee">
         <div class="container">
-            <div class="row row-cols-1 row-cols-md-3 row-cols-sm-2 g-0"
-                data-anime='{ "el": "childs", "translateX": [30, 0], "opacity": [0,1], "duration": 600, "delay":0, "staggervalue": 300, "easing": "easeOutQuad" }'>
+            <div class="process-steps-viewport">
+            <div class="row row-cols-1 row-cols-md-3 row-cols-sm-2 g-0 process-steps-track">
                 <!-- start process step item -->
                 <div class="col process-step-style-06 last-paragraph-no-margin hover-box sm-mb-50px">
                     <div class="process-step-icon-box position-relative top-minus-14px">
@@ -228,9 +228,71 @@
                 </div>
                 <!-- end process step item -->
             </div>
+            </div>
         </div>
     </section>
     <!-- end section -->
+
+    <style>
+        .process-steps-viewport {
+            overflow: hidden;
+        }
+
+        .process-steps-track {
+            width: 200%;
+            max-width: none;
+            flex-wrap: nowrap;
+            animation: process-steps-marquee 36s linear infinite;
+            will-change: transform;
+        }
+
+        .process-steps-track > .process-step-style-06 {
+            flex: 0 0 16.6666667%;
+            max-width: 16.6666667%;
+        }
+
+        @keyframes process-steps-marquee {
+            from { transform: translateX(-50%); }
+            to { transform: translateX(0); }
+        }
+
+        @media (max-width: 991.98px) {
+            .process-steps-track > .process-step-style-06 {
+                flex-basis: 25%;
+                max-width: 25%;
+            }
+        }
+
+        @media (max-width: 575.98px) {
+            .process-steps-track > .process-step-style-06 {
+                flex-basis: 50%;
+                max-width: 50%;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .process-steps-track {
+                animation: none;
+                transform: none;
+            }
+
+            .process-steps-track > .process-step-style-06:nth-child(n + 4) {
+                display: none;
+            }
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var track = document.querySelector('.process-steps-track');
+            if (!track || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+            Array.from(track.children).forEach(function (card) {
+                var copy = card.cloneNode(true);
+                copy.setAttribute('aria-hidden', 'true');
+                track.appendChild(copy);
+            });
+        });
+    </script>
 
 
 
