@@ -281,6 +281,7 @@
             }
         }
     </style>
+
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             var track = document.querySelector('.process-steps-track');
@@ -601,8 +602,8 @@
     <!-- start section -->
     <section class="pb-0">
         <div class="container-fluid p-0">
-            <div class="row row-cols-1 row-cols-lg-4 row-cols-sm-2 g-0"
-                data-anime='{ "el": "childs", "translateY": [30, 0], "rotateX":[30, 0], "opacity": [0,1], "duration": 600, "delay":0, "staggervalue": 300, "easing": "easeOutQuad" }'>
+            <div class="team-carousel-viewport" aria-label="Team members">
+            <div class="row row-cols-1 row-cols-lg-4 row-cols-sm-2 g-0 team-carousel-track">
                 <!-- start team member item -->
                 <div class="col team-style-10 md-ps-15px md-pe-15px md-mb-30px">
                     <figure class="mb-0 position-relative overflow-hidden">
@@ -686,9 +687,111 @@
                 </div>
                 <!-- end team member item -->
             </div>
+            </div>
         </div>
     </section>
     <!-- end section -->
+
+    <style>
+        .team-carousel-viewport {
+            overflow: hidden;
+        }
+
+        .team-carousel-track {
+            flex-wrap: nowrap;
+            will-change: transform;
+        }
+
+        .team-carousel-track > .team-style-10 {
+            flex: 0 0 25%;
+            max-width: 25%;
+        }
+
+        .team-carousel-track.is-sliding {
+            transition: transform 750ms ease;
+        }
+
+        @media (max-width: 991.98px) {
+            .team-carousel-track > .team-style-10 {
+                flex-basis: 50%;
+                max-width: 50%;
+            }
+        }
+
+        @media (max-width: 575.98px) {
+            .team-carousel-track > .team-style-10 {
+                flex-basis: 100%;
+                max-width: 100%;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .team-carousel-track.is-sliding {
+                transition: none;
+            }
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var viewport = document.querySelector('.team-carousel-viewport');
+            var track = viewport && viewport.querySelector('.team-carousel-track');
+            var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+            if (!track || track.children.length < 2 || reduceMotion.matches) return;
+
+            var timer;
+            var sliding = false;
+
+            function makeTailCopy() {
+                var copy = track.firstElementChild.cloneNode(true);
+                copy.setAttribute('aria-hidden', 'true');
+                track.appendChild(copy);
+            }
+
+            function advance() {
+                if (sliding || viewport.matches(':hover') || viewport.contains(document.activeElement)) return;
+                var firstCard = track.firstElementChild;
+                if (!firstCard) return;
+
+                sliding = true;
+                track.style.transform = 'translateX(-' + firstCard.getBoundingClientRect().width + 'px)';
+                track.classList.add('is-sliding');
+            }
+
+            track.addEventListener('transitionend', function (event) {
+                if (event.target !== track || event.propertyName !== 'transform') return;
+
+                track.classList.remove('is-sliding');
+                track.removeChild(track.firstElementChild);
+                track.style.transform = 'translateX(0)';
+                makeTailCopy();
+                sliding = false;
+            });
+
+            function start() {
+                if (timer || reduceMotion.matches) return;
+                timer = window.setInterval(advance, 2800);
+            }
+
+            function stop() {
+                window.clearInterval(timer);
+                timer = null;
+            }
+
+            viewport.addEventListener('mouseenter', stop);
+            viewport.addEventListener('mouseleave', start);
+            viewport.addEventListener('focusin', stop);
+            viewport.addEventListener('focusout', function (event) {
+                if (!viewport.contains(event.relatedTarget)) start();
+            });
+            reduceMotion.addEventListener('change', function () {
+                if (reduceMotion.matches) stop();
+                else start();
+            });
+
+            makeTailCopy();
+            start();
+        });
+    </script>
 
 
     <!-- start section -->
