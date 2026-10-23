@@ -769,7 +769,7 @@
 
             function start() {
                 if (timer || reduceMotion.matches) return;
-                timer = window.setInterval(advance, 2800);
+                timer = window.setInterval(advance, 100);
             }
 
             function stop() {

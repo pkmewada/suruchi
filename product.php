@@ -76,25 +76,7 @@
                         </ul>
                     </div>
                     <div class="col-12 filter-content mt-20 lg-mt-0 mb-3 lg-mb-0">
-                        <ul class="portfolio-simple portfolio-wrapper grid-loading grid grid-4col xxl-grid-4col xl-grid-4col lg-grid-4col md-grid-2col sm-grid-2col xs-grid-1col gutter-extra-large text-center">
-                            <li class="grid-sizer"></li>
-                            <!-- start portfolio item -->
-                            <li class="grid-item grid-item-single transition-inner-all">
-                                <div class="portfolio-box" data-bottom-top="transform: translate3d(0px, -80px, 0px);" data-top-bottom="transform: translate3d(0px, 80px, 0px);">
-                                    <div class="portfolio-image bg-extra-medium-gray">
-                                        <a href="demo-branding-agency-single-project-slider.html">
-                                            <img src="images/demo-scattered-portfolio-03.jpg" alt="" /> 
-                                        </a>
-                                    </div>
-                                    <div class="portfolio-caption pt-35px pb-35px sm-pt-20px sm-pb-0">
-                                        <a href="demo-branding-agency-single-project-slider.html" class="text-dark-gray ls-minus-05px fw-600 fs-22 alt-font">Outward</a>
-                                        <span class="d-inline-block align-middle w-10px separator-line-1px bg-light-gray ms-5px me-5px"></span>
-                                        <div class="d-inline-block">Identity</div>
-                                    </div>
-                                </div>
-                            </li>  
-                            <!-- end portfolio item -->
-                        </ul>
+                        
                     </div>
                     <div class="col-xl-7 col-md-7 filter-content mt-5 lg-mt-0">
                         <ul class="portfolio-simple portfolio-wrapper grid-loading grid grid-4col xxl-grid-4col xl-grid-4col lg-grid-4col md-grid-2col sm-grid-2col xs-grid-1col gutter-extra-large text-center">
@@ -139,25 +121,301 @@
                         </ul>
                     </div>
                     <div class="col-12 mt-5 lg-mt-0 filter-content">
+                       
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end section -->
+
+         <section class="position-relative pt-0">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-4 col-md-5 filter-content">
                         <ul class="portfolio-simple portfolio-wrapper grid-loading grid grid-4col xxl-grid-4col xl-grid-4col lg-grid-4col md-grid-2col sm-grid-2col xs-grid-1col gutter-extra-large text-center">
                             <li class="grid-sizer"></li>
                             <!-- start portfolio item -->
                             <li class="grid-item grid-item-single transition-inner-all">
-                                <div class="portfolio-box" data-bottom-top="transform: translate3d(0px, -80px, 0px);" data-top-bottom="transform: translate3d(0px, 80px, 0px);">
+                                <div class="portfolio-box" data-bottom-top="transform: translate3d(0px, 50px, 0px);" data-top-bottom="transform: translate3d(0px, -50px, 0px);">
                                     <div class="portfolio-image bg-extra-medium-gray">
                                         <a href="demo-branding-agency-single-project-slider.html">
-                                            <img src="images/demo-scattered-portfolio-06.jpg" alt="" /> 
+                                            <img src="images/demo-scattered-portfolio-01.jpg" alt="" /> 
                                         </a>
                                     </div>
-                                    <div class="portfolio-caption pt-35px pb-35px sm-pt-20px lg-pb-0">
-                                        <a href="demo-branding-agency-single-project-slider.html" class="text-dark-gray ls-minus-05px fw-600 fs-22 alt-font">Treato</a>
+                                    <div class="portfolio-caption pt-35px pb-35px sm-pt-20px sm-pb-0">
+                                        <a href="demo-branding-agency-single-project-slider.html" class="text-dark-gray ls-minus-05px ls-minus-05px fw-600 fs-22 alt-font">Tailoring</a>
                                         <span class="d-inline-block align-middle w-10px separator-line-1px bg-light-gray ms-5px me-5px"></span>
-                                        <div class="d-inline-block">Web</div>
+                                        <div class="d-inline-block">Branding</div>
                                     </div>
                                 </div>
                             </li>  
                             <!-- end portfolio item -->
                         </ul>
+                    </div>
+                    <div class="col-xl-7 col-md-7 filter-content offset-xl-1">
+                        <ul class="portfolio-simple portfolio-wrapper grid-loading grid grid-4col xxl-grid-4col xl-grid-4col lg-grid-4col md-grid-2col sm-grid-2col xs-grid-1col gutter-extra-large text-center">
+                            <li class="grid-sizer"></li>
+                            <!-- start portfolio item -->
+                            <li class="grid-item grid-item-single transition-inner-all">
+                                <div class="portfolio-box" data-bottom-top="transform: translate3d(0px, 100px, 0px)" data-top-bottom="transform: translate3d(0px, 180px, 0px);">
+                                    <div class="portfolio-image bg-extra-medium-gray">
+                                        <a href="demo-branding-agency-single-project-slider.html">
+                                            <img src="images/demo-scattered-portfolio-02.jpg" alt="" /> 
+                                        </a>
+                                    </div>
+                                    <div class="portfolio-caption pt-35px pb-35px sm-pt-20px sm-pb-0">
+                                        <a href="demo-branding-agency-single-project-slider.html" class="text-dark-gray ls-minus-05px fw-600 fs-22 alt-font">Designblast</a>
+                                        <span class="d-inline-block align-middle w-10px separator-line-1px bg-light-gray ms-5px me-5px"></span>
+                                        <div class="d-inline-block">Photography</div>
+                                    </div>
+                                </div>
+                            </li>  
+                            <!-- end portfolio item -->
+                        </ul>
+                    </div>
+                    <div class="col-12 filter-content mt-20 lg-mt-0 mb-3 lg-mb-0">
+                        
+                    </div>
+                    <div class="col-xl-7 col-md-7 filter-content mt-5 lg-mt-0">
+                        <ul class="portfolio-simple portfolio-wrapper grid-loading grid grid-4col xxl-grid-4col xl-grid-4col lg-grid-4col md-grid-2col sm-grid-2col xs-grid-1col gutter-extra-large text-center">
+                            <li class="grid-sizer"></li>
+                            <!-- start portfolio item -->
+                            <li class="grid-item grid-item-single transition-inner-all">
+                                <div class="portfolio-box" data-bottom-top="transform: translate3d(0px, 50px, 0px);" data-top-bottom="transform: translate3d(0px, -50px, 0px);">
+                                    <div class="portfolio-image bg-extra-medium-gray">
+                                        <a href="demo-branding-agency-single-project-slider.html">
+                                            <img src="images/demo-scattered-portfolio-04.jpg" alt="" /> 
+                                        </a>
+                                    </div>
+                                    <div class="portfolio-caption pt-35px pb-35px sm-pt-20px sm-pb-0">
+                                        <a href="demo-branding-agency-single-project-slider.html" class="text-dark-gray ls-minus-05px fw-600 fs-22 alt-font">Violator</a>
+                                        <span class="d-inline-block align-middle w-10px separator-line-1px bg-light-gray ms-5px me-5px"></span>
+                                        <div class="d-inline-block">Marketing</div>
+                                    </div>
+                                </div>
+                            </li>  
+                            <!-- end portfolio item -->
+                        </ul>
+                    </div>
+                    <div class="col-xl-4 col-md-5 filter-content offset-xl-1 mt-3 lg-mt-0">
+                        <ul class="portfolio-simple portfolio-wrapper grid-loading grid grid-4col xxl-grid-4col xl-grid-4col lg-grid-4col md-grid-2col sm-grid-2col xs-grid-1col gutter-extra-large text-center">
+                            <li class="grid-sizer"></li>
+                            <!-- start portfolio item -->
+                            <li class="grid-item grid-item-single transition-inner-all">
+                                <div class="portfolio-box" data-bottom-top="transform: translate3d(0px, -50px, 0px);" data-top-bottom="transform: translate3d(0px, 50px, 0px);">
+                                    <div class="portfolio-image bg-extra-medium-gray">
+                                        <a href="demo-branding-agency-single-project-slider.html">
+                                            <img src="images/demo-scattered-portfolio-05.jpg" alt="" /> 
+                                        </a>
+                                    </div>
+                                    <div class="portfolio-caption pt-35px pb-35px sm-pt-20px sm-pb-0">
+                                        <a href="demo-branding-agency-single-project-slider.html" class="text-dark-gray ls-minus-05px fw-600 fs-22 alt-font">Potato</a>
+                                        <span class="d-inline-block align-middle w-10px separator-line-1px bg-light-gray ms-5px me-5px"></span>
+                                        <div class="d-inline-block">Branding</div>
+                                    </div>
+                                </div>
+                            </li>  
+                            <!-- end portfolio item -->
+                        </ul>
+                    </div>
+                    <div class="col-12 mt-5 lg-mt-0 filter-content">
+                       
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end section -->
+
+         <section class="position-relative pt-0">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-4 col-md-5 filter-content">
+                        <ul class="portfolio-simple portfolio-wrapper grid-loading grid grid-4col xxl-grid-4col xl-grid-4col lg-grid-4col md-grid-2col sm-grid-2col xs-grid-1col gutter-extra-large text-center">
+                            <li class="grid-sizer"></li>
+                            <!-- start portfolio item -->
+                            <li class="grid-item grid-item-single transition-inner-all">
+                                <div class="portfolio-box" data-bottom-top="transform: translate3d(0px, 50px, 0px);" data-top-bottom="transform: translate3d(0px, -50px, 0px);">
+                                    <div class="portfolio-image bg-extra-medium-gray">
+                                        <a href="demo-branding-agency-single-project-slider.html">
+                                            <img src="images/demo-scattered-portfolio-01.jpg" alt="" /> 
+                                        </a>
+                                    </div>
+                                    <div class="portfolio-caption pt-35px pb-35px sm-pt-20px sm-pb-0">
+                                        <a href="demo-branding-agency-single-project-slider.html" class="text-dark-gray ls-minus-05px ls-minus-05px fw-600 fs-22 alt-font">Tailoring</a>
+                                        <span class="d-inline-block align-middle w-10px separator-line-1px bg-light-gray ms-5px me-5px"></span>
+                                        <div class="d-inline-block">Branding</div>
+                                    </div>
+                                </div>
+                            </li>  
+                            <!-- end portfolio item -->
+                        </ul>
+                    </div>
+                    <div class="col-xl-7 col-md-7 filter-content offset-xl-1">
+                        <ul class="portfolio-simple portfolio-wrapper grid-loading grid grid-4col xxl-grid-4col xl-grid-4col lg-grid-4col md-grid-2col sm-grid-2col xs-grid-1col gutter-extra-large text-center">
+                            <li class="grid-sizer"></li>
+                            <!-- start portfolio item -->
+                            <li class="grid-item grid-item-single transition-inner-all">
+                                <div class="portfolio-box" data-bottom-top="transform: translate3d(0px, 100px, 0px)" data-top-bottom="transform: translate3d(0px, 180px, 0px);">
+                                    <div class="portfolio-image bg-extra-medium-gray">
+                                        <a href="demo-branding-agency-single-project-slider.html">
+                                            <img src="images/demo-scattered-portfolio-02.jpg" alt="" /> 
+                                        </a>
+                                    </div>
+                                    <div class="portfolio-caption pt-35px pb-35px sm-pt-20px sm-pb-0">
+                                        <a href="demo-branding-agency-single-project-slider.html" class="text-dark-gray ls-minus-05px fw-600 fs-22 alt-font">Designblast</a>
+                                        <span class="d-inline-block align-middle w-10px separator-line-1px bg-light-gray ms-5px me-5px"></span>
+                                        <div class="d-inline-block">Photography</div>
+                                    </div>
+                                </div>
+                            </li>  
+                            <!-- end portfolio item -->
+                        </ul>
+                    </div>
+                    <div class="col-12 filter-content mt-20 lg-mt-0 mb-3 lg-mb-0">
+                        
+                    </div>
+                    <div class="col-xl-7 col-md-7 filter-content mt-5 lg-mt-0">
+                        <ul class="portfolio-simple portfolio-wrapper grid-loading grid grid-4col xxl-grid-4col xl-grid-4col lg-grid-4col md-grid-2col sm-grid-2col xs-grid-1col gutter-extra-large text-center">
+                            <li class="grid-sizer"></li>
+                            <!-- start portfolio item -->
+                            <li class="grid-item grid-item-single transition-inner-all">
+                                <div class="portfolio-box" data-bottom-top="transform: translate3d(0px, 50px, 0px);" data-top-bottom="transform: translate3d(0px, -50px, 0px);">
+                                    <div class="portfolio-image bg-extra-medium-gray">
+                                        <a href="demo-branding-agency-single-project-slider.html">
+                                            <img src="images/demo-scattered-portfolio-04.jpg" alt="" /> 
+                                        </a>
+                                    </div>
+                                    <div class="portfolio-caption pt-35px pb-35px sm-pt-20px sm-pb-0">
+                                        <a href="demo-branding-agency-single-project-slider.html" class="text-dark-gray ls-minus-05px fw-600 fs-22 alt-font">Violator</a>
+                                        <span class="d-inline-block align-middle w-10px separator-line-1px bg-light-gray ms-5px me-5px"></span>
+                                        <div class="d-inline-block">Marketing</div>
+                                    </div>
+                                </div>
+                            </li>  
+                            <!-- end portfolio item -->
+                        </ul>
+                    </div>
+                    <div class="col-xl-4 col-md-5 filter-content offset-xl-1 mt-3 lg-mt-0">
+                        <ul class="portfolio-simple portfolio-wrapper grid-loading grid grid-4col xxl-grid-4col xl-grid-4col lg-grid-4col md-grid-2col sm-grid-2col xs-grid-1col gutter-extra-large text-center">
+                            <li class="grid-sizer"></li>
+                            <!-- start portfolio item -->
+                            <li class="grid-item grid-item-single transition-inner-all">
+                                <div class="portfolio-box" data-bottom-top="transform: translate3d(0px, -50px, 0px);" data-top-bottom="transform: translate3d(0px, 50px, 0px);">
+                                    <div class="portfolio-image bg-extra-medium-gray">
+                                        <a href="demo-branding-agency-single-project-slider.html">
+                                            <img src="images/demo-scattered-portfolio-05.jpg" alt="" /> 
+                                        </a>
+                                    </div>
+                                    <div class="portfolio-caption pt-35px pb-35px sm-pt-20px sm-pb-0">
+                                        <a href="demo-branding-agency-single-project-slider.html" class="text-dark-gray ls-minus-05px fw-600 fs-22 alt-font">Potato</a>
+                                        <span class="d-inline-block align-middle w-10px separator-line-1px bg-light-gray ms-5px me-5px"></span>
+                                        <div class="d-inline-block">Branding</div>
+                                    </div>
+                                </div>
+                            </li>  
+                            <!-- end portfolio item -->
+                        </ul>
+                    </div>
+                    <div class="col-12 mt-5 lg-mt-0 filter-content">
+                       
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end section -->
+
+         <section class="position-relative pt-0">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-4 col-md-5 filter-content">
+                        <ul class="portfolio-simple portfolio-wrapper grid-loading grid grid-4col xxl-grid-4col xl-grid-4col lg-grid-4col md-grid-2col sm-grid-2col xs-grid-1col gutter-extra-large text-center">
+                            <li class="grid-sizer"></li>
+                            <!-- start portfolio item -->
+                            <li class="grid-item grid-item-single transition-inner-all">
+                                <div class="portfolio-box" data-bottom-top="transform: translate3d(0px, 50px, 0px);" data-top-bottom="transform: translate3d(0px, -50px, 0px);">
+                                    <div class="portfolio-image bg-extra-medium-gray">
+                                        <a href="demo-branding-agency-single-project-slider.html">
+                                            <img src="images/demo-scattered-portfolio-01.jpg" alt="" /> 
+                                        </a>
+                                    </div>
+                                    <div class="portfolio-caption pt-35px pb-35px sm-pt-20px sm-pb-0">
+                                        <a href="demo-branding-agency-single-project-slider.html" class="text-dark-gray ls-minus-05px ls-minus-05px fw-600 fs-22 alt-font">Tailoring</a>
+                                        <span class="d-inline-block align-middle w-10px separator-line-1px bg-light-gray ms-5px me-5px"></span>
+                                        <div class="d-inline-block">Branding</div>
+                                    </div>
+                                </div>
+                            </li>  
+                            <!-- end portfolio item -->
+                        </ul>
+                    </div>
+                    <div class="col-xl-7 col-md-7 filter-content offset-xl-1">
+                        <ul class="portfolio-simple portfolio-wrapper grid-loading grid grid-4col xxl-grid-4col xl-grid-4col lg-grid-4col md-grid-2col sm-grid-2col xs-grid-1col gutter-extra-large text-center">
+                            <li class="grid-sizer"></li>
+                            <!-- start portfolio item -->
+                            <li class="grid-item grid-item-single transition-inner-all">
+                                <div class="portfolio-box" data-bottom-top="transform: translate3d(0px, 100px, 0px)" data-top-bottom="transform: translate3d(0px, 180px, 0px);">
+                                    <div class="portfolio-image bg-extra-medium-gray">
+                                        <a href="demo-branding-agency-single-project-slider.html">
+                                            <img src="images/demo-scattered-portfolio-02.jpg" alt="" /> 
+                                        </a>
+                                    </div>
+                                    <div class="portfolio-caption pt-35px pb-35px sm-pt-20px sm-pb-0">
+                                        <a href="demo-branding-agency-single-project-slider.html" class="text-dark-gray ls-minus-05px fw-600 fs-22 alt-font">Designblast</a>
+                                        <span class="d-inline-block align-middle w-10px separator-line-1px bg-light-gray ms-5px me-5px"></span>
+                                        <div class="d-inline-block">Photography</div>
+                                    </div>
+                                </div>
+                            </li>  
+                            <!-- end portfolio item -->
+                        </ul>
+                    </div>
+                    <div class="col-12 filter-content mt-20 lg-mt-0 mb-3 lg-mb-0">
+                        
+                    </div>
+                    <div class="col-xl-7 col-md-7 filter-content mt-5 lg-mt-0">
+                        <ul class="portfolio-simple portfolio-wrapper grid-loading grid grid-4col xxl-grid-4col xl-grid-4col lg-grid-4col md-grid-2col sm-grid-2col xs-grid-1col gutter-extra-large text-center">
+                            <li class="grid-sizer"></li>
+                            <!-- start portfolio item -->
+                            <li class="grid-item grid-item-single transition-inner-all">
+                                <div class="portfolio-box" data-bottom-top="transform: translate3d(0px, 50px, 0px);" data-top-bottom="transform: translate3d(0px, -50px, 0px);">
+                                    <div class="portfolio-image bg-extra-medium-gray">
+                                        <a href="demo-branding-agency-single-project-slider.html">
+                                            <img src="images/demo-scattered-portfolio-04.jpg" alt="" /> 
+                                        </a>
+                                    </div>
+                                    <div class="portfolio-caption pt-35px pb-35px sm-pt-20px sm-pb-0">
+                                        <a href="demo-branding-agency-single-project-slider.html" class="text-dark-gray ls-minus-05px fw-600 fs-22 alt-font">Violator</a>
+                                        <span class="d-inline-block align-middle w-10px separator-line-1px bg-light-gray ms-5px me-5px"></span>
+                                        <div class="d-inline-block">Marketing</div>
+                                    </div>
+                                </div>
+                            </li>  
+                            <!-- end portfolio item -->
+                        </ul>
+                    </div>
+                    <div class="col-xl-4 col-md-5 filter-content offset-xl-1 mt-3 lg-mt-0">
+                        <ul class="portfolio-simple portfolio-wrapper grid-loading grid grid-4col xxl-grid-4col xl-grid-4col lg-grid-4col md-grid-2col sm-grid-2col xs-grid-1col gutter-extra-large text-center">
+                            <li class="grid-sizer"></li>
+                            <!-- start portfolio item -->
+                            <li class="grid-item grid-item-single transition-inner-all">
+                                <div class="portfolio-box" data-bottom-top="transform: translate3d(0px, -50px, 0px);" data-top-bottom="transform: translate3d(0px, 50px, 0px);">
+                                    <div class="portfolio-image bg-extra-medium-gray">
+                                        <a href="demo-branding-agency-single-project-slider.html">
+                                            <img src="images/demo-scattered-portfolio-05.jpg" alt="" /> 
+                                        </a>
+                                    </div>
+                                    <div class="portfolio-caption pt-35px pb-35px sm-pt-20px sm-pb-0">
+                                        <a href="demo-branding-agency-single-project-slider.html" class="text-dark-gray ls-minus-05px fw-600 fs-22 alt-font">Potato</a>
+                                        <span class="d-inline-block align-middle w-10px separator-line-1px bg-light-gray ms-5px me-5px"></span>
+                                        <div class="d-inline-block">Branding</div>
+                                    </div>
+                                </div>
+                            </li>  
+                            <!-- end portfolio item -->
+                        </ul>
+                    </div>
+                    <div class="col-12 mt-5 lg-mt-0 filter-content">
+                       
                     </div>
                 </div>
             </div>
