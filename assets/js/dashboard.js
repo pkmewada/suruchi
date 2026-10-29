@@ -14,6 +14,7 @@ const $ = selector => document.querySelector(selector);
 const make = (tag, properties = {}) => Object.assign(document.createElement(tag), properties);
 let current = {page: 'home', section: Object.keys(DATA.home)[0]};
 const pendingUploadCleanup = new Map();
+let activePage = 'home';
 
 function cleanupKey(page, section) {
   return page + ':' + section;
@@ -27,12 +28,13 @@ function renderValue(key, value, update, allowListChanges) {
   if (Array.isArray(value)) {
     const box = make('div', {className: 'field'});
     box.append(make('label', {textContent: labelFor(key)}));
-    const holder = make('div');
+    const holder = make('div', {className: 'list-grid'});
     const itemPrototype = value.length ? JSON.parse(JSON.stringify(value[0])) : null;
     const draw = () => {
       holder.replaceChildren();
       value.forEach((item, index) => {
-        const card = make('div', {className: 'list-item'});
+        const singleField = item === null || typeof item !== 'object' || Object.keys(item).length === 1;
+        const card = make('div', {className: 'list-item' + (singleField ? ' single-field' : '')});
         const heading = make('div', {className: 'item-head'});
         heading.append(make('span', {textContent: labelFor(key) + ' ' + (index + 1)}));
         const actions = make('div', {className: 'item-actions'});
@@ -74,9 +76,11 @@ function renderValue(key, value, update, allowListChanges) {
   if (value !== null && typeof value === 'object') {
     const group = make('fieldset', {className: 'group'});
     group.append(make('legend', {textContent: labelFor(key)}));
+    const fields = make('div', {className: 'group-fields'});
     Object.entries(value).forEach(([childKey, childValue]) => {
-      group.append(renderValue(childKey, childValue, next => { value[childKey] = next; update(value); }, allowListChanges));
+      fields.append(renderValue(childKey, childValue, next => { value[childKey] = next; update(value); }, allowListChanges));
     });
+    group.append(fields);
     return group;
   }
 
@@ -91,6 +95,7 @@ function renderValue(key, value, update, allowListChanges) {
   if (/^(image|image\d+|bg_image|hover_image|photo)$/i.test(key)) {
     const fieldPage = current.page;
     const fieldSection = current.section;
+    const controls = make('div', {className: 'upload-controls'});
     const upload = make('input', {type: 'file', accept: 'image/jpeg,image/png,image/webp,image/gif'});
     const uploadButton = make('button', {type: 'button', textContent: 'Upload image', className: 'btn light sm'});
     const uploadStatus = make('span', {className: 'hint'});
@@ -124,7 +129,8 @@ function renderValue(key, value, update, allowListChanges) {
         uploadStatus.textContent = 'Error: ' + error.message;
       }
     });
-    field.append(upload, uploadButton, uploadStatus);
+    controls.append(upload, uploadButton, uploadStatus);
+    field.append(controls);
   }
   return field;
 }
@@ -139,23 +145,61 @@ function show(page, section) {
   const card = make('div', {className: 'card'});
   card.append(renderValue(section, DATA[page][section], updated => { DATA[page][section] = updated; }, page === 'home'));
   form.append(card);
-  document.querySelectorAll('.nav-section').forEach(button => {
+  document.querySelectorAll('.section-link').forEach(button => {
     button.classList.toggle('active', button.dataset.page === page && button.dataset.section === section);
+    button.setAttribute('aria-current', button.dataset.page === page && button.dataset.section === section ? 'page' : 'false');
   });
 }
 
-Object.entries(PAGE_LABELS).forEach(([page, label]) => {
-  const group = make('div', {className: 'page-nav'});
-  group.append(make('div', {className: 'page-label', textContent: label}));
-  Object.keys(DATA[page]).forEach(section => {
-    const button = make('button', {type: 'button', textContent: labelFor(section), className: 'nav-section'});
+function renderSections(page, selectedSection) {
+  activePage = page;
+  const nav = $('#section-nav');
+  const filter = $('#section-filter');
+  const query = filter.value.trim().toLowerCase();
+  const sections = Object.keys(DATA[page]);
+  nav.replaceChildren();
+
+  sections.forEach(section => {
+    const label = labelFor(section);
+    if (query && !label.toLowerCase().includes(query)) return;
+    const button = make('button', {type: 'button', textContent: label, className: 'section-link'});
     button.dataset.page = page;
     button.dataset.section = section;
     button.addEventListener('click', () => show(page, section));
-    group.append(button);
+    button.classList.toggle('active', section === selectedSection);
+    button.setAttribute('aria-current', section === selectedSection ? 'page' : 'false');
+    nav.append(button);
   });
-  $('#nav').append(group);
+
+  $('#empty-sections').hidden = nav.childElementCount > 0;
+  if (!nav.childElementCount && query) {
+    $('#form').replaceChildren();
+    $('#title').textContent = PAGE_LABELS[page];
+  } else if (selectedSection && !query) {
+    show(page, selectedSection);
+  }
+}
+
+Object.entries(PAGE_LABELS).forEach(([page, label]) => {
+  const button = make('button', {type: 'button', className: 'page-link'});
+  const icons = {home: '⌂', about: '✳', '4fs': '◇', 'design-research': '⌕', product: '▧', contact: '✉'};
+  button.append(make('span', {className: 'page-icon', textContent: icons[page] || '•', 'aria-hidden': 'true'}));
+  button.append(make('span', {textContent: label}));
+  button.dataset.page = page;
+  button.addEventListener('click', () => {
+    $('#section-filter').value = '';
+    const section = Object.keys(DATA[page])[0];
+    renderSections(page, section);
+    document.querySelectorAll('.page-link').forEach(item => {
+      item.classList.toggle('active', item.dataset.page === page);
+      item.setAttribute('aria-current', item.dataset.page === page ? 'page' : 'false');
+    });
+    show(page, section);
+  });
+  $('#page-nav').append(button);
 });
+
+$('#section-filter').addEventListener('input', () => renderSections(activePage, current.section));
 
 $('#saveBtn').addEventListener('click', async () => {
   const message = $('#msg');
@@ -186,4 +230,9 @@ $('#saveBtn').addEventListener('click', async () => {
   }
 });
 
+renderSections(current.page, current.section);
+document.querySelectorAll('.page-link').forEach(button => {
+  button.classList.toggle('active', button.dataset.page === current.page);
+  button.setAttribute('aria-current', button.dataset.page === current.page ? 'page' : 'false');
+});
 show(current.page, current.section);

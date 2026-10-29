@@ -81,7 +81,9 @@ include __DIR__ . '/../../includes/header.php';
                     <div class="col icon-with-text-style-04 transition-inner-all md-mb-30px">
                         <div class="feature-box hover-box transition dark-hover bg-white border-radius-6px pt-17 pb-17 ps-14 pe-14 last-paragraph-no-margin box-shadow-quadruple-large box-shadow-hover overflow-hidden">
                             <div class="feature-box-icon">
-                                <i class="ti-bar-chart text-base-color icon-extra-large text-light-opacity mb-20px"></i>
+                                <svg class="benefit-icon" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+                                    <path d="M5 58h54M11 54V41h9v13m5 0V29h9v25m5 0V17h9v37m5 0V7h9v47" />
+                                </svg>
                             </div>
                             <div class="feature-box-content">
                                 <span class="d-inline-block alt-font text-dark-gray fw-500 fs-18 mb-5px"><?= e($designPage['benefits']['items'][0]['title']) ?></span>
@@ -95,7 +97,10 @@ include __DIR__ . '/../../includes/header.php';
                     <div class="col icon-with-text-style-04 transition-inner-all md-mb-30px">
                         <div class="feature-box hover-box transition dark-hover bg-white border-radius-6px pt-17 pb-17 ps-14 pe-14 last-paragraph-no-margin box-shadow-quadruple-large box-shadow-hover overflow-hidden">
                             <div class="feature-box-icon">
-                                <i class="ti-time text-base-color icon-extra-large text-light-opacity mb-20px"></i>
+                                <svg class="benefit-icon" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+                                    <circle cx="32" cy="32" r="28" />
+                                    <path d="M32 15v18h17" />
+                                </svg>
                             </div>
                             <div class="feature-box-content">
                                 <span class="d-inline-block alt-font text-dark-gray fw-500 fs-18 mb-5px">Saves time</span>
@@ -109,7 +114,10 @@ include __DIR__ . '/../../includes/header.php';
                     <div class="col icon-with-text-style-04 transition-inner-all xs-mb-30px">
                         <div class="feature-box hover-box transition dark-hover bg-white border-radius-6px pt-17 pb-17 ps-14 pe-14 last-paragraph-no-margin box-shadow-quadruple-large box-shadow-hover overflow-hidden">
                             <div class="feature-box-icon">
-                                <i class="ti-user text-base-color icon-extra-large text-light-opacity mb-20px"></i>
+                                <svg class="benefit-icon" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+                                    <path d="M32 8c-7 0-11 5-11 12v8c0 3-2 5-4 7 0 3 2 5 5 6 2 8 6 12 10 12s8-4 10-12c3-1 5-3 5-6-2-2-4-4-4-7v-8c0-7-4-12-11-12z" />
+                                    <path d="M6 60c2-10 11-16 26-16s24 6 26 16" />
+                                </svg>
                             </div>
                             <div class="feature-box-content">
                                 <span class="d-inline-block alt-font text-dark-gray fw-500 fs-18 mb-5px"><?= e($designPage['benefits']['items'][1]['title']) ?></span>
@@ -123,7 +131,10 @@ include __DIR__ . '/../../includes/header.php';
                     <div class="col icon-with-text-style-04 transition-inner-all">
                         <div class="feature-box hover-box transition dark-hover bg-white border-radius-6px pt-17 pb-17 ps-14 pe-14 last-paragraph-no-margin box-shadow-quadruple-large box-shadow-hover overflow-hidden">
                             <div class="feature-box-icon">
-                                <i class="ti-bookmark-alt text-base-color icon-extra-large text-light-opacity mb-20px"></i>
+                                <svg class="benefit-icon" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+                                    <path d="M10 5h44v54H10z" />
+                                    <path d="M22 5v27l10-8 10 8V5" />
+                                </svg>
                             </div>
                             <div class="feature-box-content">
                                 <span class="d-inline-block alt-font text-dark-gray fw-500 fs-18 mb-5px"><?= e($designPage['benefits']['items'][2]['title']) ?></span>

@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="<?= e(app_url('assets/css/icon.min.css?v=20261015')) ?>" />
     <link rel="stylesheet" href="<?= e(app_url('assets/css/style.min.css?v=20261015')) ?>" />
     <link rel="stylesheet" href="<?= e(app_url('assets/css/responsive.min.css?v=20261015')) ?>" />
-    <link rel="stylesheet" href="<?= e(app_url('assets/css/branding-agency.css?v=20261015')) ?>" />
+    <link rel="stylesheet" href="<?= e(app_url('assets/css/branding-agency.css?v=20261029')) ?>" />
     <?php if (app_route() === 'home'): ?>
     <link rel="stylesheet" href="<?= e(app_url('assets/css/home.css')) ?>" />
     <?php endif; ?>

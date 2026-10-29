@@ -143,16 +143,5 @@ include __DIR__ . '/../../includes/header.php';
             </div>
         </section>
         <!-- end section --> 
-        <!-- start section --> 
-        <section class="p-0">
-            <div class="container-fluid p-0">
-                <div class="row g-0">
-                    <div class="col-md-12">
-                        <div id="map" class="map h-650px md-h-500px sm-h-400px" data-map-options='{ "lat": -37.805688, "lng": 144.962312, "style": "Silver", "marker": { "type": "HTML", "color": "#232323" }, "popup": { "defaultOpen": true, "html": "<div class=infowindow><strong class=\"mb-3 d-inline-block alt-font\">Crafto Branding</strong><p class=\"alt-font\">16122 Collins street, Melbourne, Australia</p></div><div class=\"google-maps-link alt-font\"> <a aria-label=\"View larger map\" target=\"_blank\" jstcache=\"31\" href=\"https://maps.google.com/maps?ll=-37.805688,144.962312&amp;z=17&amp;t=m&amp;hl=en-US&amp;gl=IN&amp;mapclient=embed&amp;cid=13153204942596594449\" jsaction=\"mouseup:placeCard.largerMap\">VIEW LARGER MAP</a></div>" } }'></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- end section --> 
        
         <?php include __DIR__ . '/../../includes/footer.php'; ?>
