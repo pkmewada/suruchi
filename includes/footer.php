@@ -14,18 +14,18 @@
                         <div class="col-lg-5 col-6">
                             <span class="alt-font fs-14 text-uppercase d-block text-white ls-1px lh-24">Send a
                                 message</span>
-                            <a href="demo-branding-agency-contact.html">Contact us</a>
+                            <a href="<?= e(app_url('contact')) ?>">Contact us</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-2 offset-lg-1 col-6 order-3 order-md-2">
                     <span class="alt-font fs-14 text-uppercase mb-5px d-block text-white ls-1px">Company</span>
                     <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="demo-branding-agency-about.html">About us</a></li>
-                        <li><a href="demo-branding-agency-services.html">Services</a></li>
-                        <li><a href="demo-branding-agency-portfolio.html">Portfolio</a></li>
-                        <li><a href="demo-branding-agency-contact.html">Contact</a></li>
+                        <li><a href="<?= e(app_url()) ?>">Home</a></li>
+                        <li><a href="<?= e(app_url('about')) ?>">About us</a></li>
+                        <li><a href="<?= e(app_url('4fs')) ?>">Services</a></li>
+                        <li><a href="<?= e(app_url('product')) ?>">Portfolio</a></li>
+                        <li><a href="<?= e(app_url('contact')) ?>">Contact</a></li>
                     </ul>
                 </div>
                 <div class="col-md-2 col-6 order-3 order-md-3">
@@ -39,9 +39,9 @@
                     </ul>
                 </div>
                 <div class="col-md-2 order-1 order-md-4 sm-mb-30px">
-                    <a href="index.html" class="footer-logo"><img
-                            src="images/logo.jpg"
-                            data-at2x="images/logo.jpg" alt="Suruchi Creation"></a>
+                    <a href="<?= e(app_url()) ?>" class="footer-logo"><img
+                            src="<?= e(app_url('assets/images/logo.jpg')) ?>"
+                            data-at2x="<?= e(app_url('assets/images/logo.jpg')) ?>" alt="Suruchi Creation"></a>
                 </div>
             </div>
             <div class="row">
@@ -59,10 +59,13 @@
     </footer>
     <!-- end footer -->
 <!-- javascript libraries -->
-    <script type="text/javascript" src="js/jquery.js"></script>
-    <script type="text/javascript" src="js/vendors.min.js"></script>
+    <script type="text/javascript" src="<?= e(app_url('assets/js/jquery.js')) ?>"></script>
+    <script type="text/javascript" src="<?= e(app_url('assets/js/vendors.min.js')) ?>"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.29.2/dist/feather.min.js"></script>
-    <script type="text/javascript" src="js/main.js?v=20261015"></script>
+    <script type="text/javascript" src="<?= e(app_url('assets/js/main.js?v=20261015')) ?>"></script>
+    <?php if (app_route() === 'home'): ?>
+    <script type="text/javascript" src="<?= e(app_url('assets/js/home.js')) ?>"></script>
+    <?php endif; ?>
 
 </body>
 

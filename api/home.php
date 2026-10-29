@@ -2,6 +2,7 @@
 declare(strict_types=1);
 session_start();
 require __DIR__ . '/../includes/db.php';
+require_once __DIR__ . '/../data/content.php';
 
 header('Content-Type: application/json; charset=utf-8');
 
@@ -58,30 +59,39 @@ if ($action === 'upload') {
     if (!isset($allowed[$mime])) {
         out(['ok' => false, 'error' => 'Only JPG, PNG, WEBP, GIF allowed'], 400);
     }
-    $dir = __DIR__ . '/../images/uploads/';
+    $dir = __DIR__ . '/../assets/images/uploads/';
     if (!is_dir($dir) && !mkdir($dir, 0775, true)) {
-        out(['ok' => false, 'error' => 'Cannot create images/uploads folder'], 500);
+        out(['ok' => false, 'error' => 'Cannot create assets/images/uploads folder'], 500);
     }
     $name = 'home-' . date('Ymd-His') . '-' . bin2hex(random_bytes(3)) . '.' . $allowed[$mime];
     if (!move_uploaded_file($file['tmp_name'], $dir . $name)) {
         out(['ok' => false, 'error' => 'Could not save file'], 500);
     }
-    out(['ok' => true, 'path' => 'images/uploads/' . $name]);
+    out(['ok' => true, 'path' => 'assets/images/uploads/' . $name]);
 }
 
 if ($action === 'save') {
     $body = json_decode((string)file_get_contents('php://input'), true);
-    $section = (string)($body['section'] ?? '');
-    $data = $body['data'] ?? null;
+    $section = is_array($body) ? (string)($body['section'] ?? '') : '';
+    $data = is_array($body) ? ($body['data'] ?? null) : null;
+    $requestedCleanup = is_array($body['cleanup'] ?? null) ? $body['cleanup'] : [];
     if (!array_key_exists($section, home_defaults()) || !is_array($data)) {
         out(['ok' => false, 'error' => 'Invalid section or data'], 422);
     }
     try {
+        $previousData = home_all()[$section];
         home_save($section, $data);
     } catch (Throwable $e) {
+        error_log($e->getMessage());
         out(['ok' => false, 'error' => 'Database error'], 500);
     }
-    out(['ok' => true, 'message' => 'Saved']);
+    try {
+        $warnings = cleanup_replaced_uploads($previousData, $data, $requestedCleanup);
+    } catch (Throwable $e) {
+        error_log($e->getMessage());
+        $warnings = ['Unable to verify or remove replaced uploads.'];
+    }
+    out(['ok' => true, 'message' => 'Saved', 'cleanupWarnings' => $warnings]);
 }
 
 out(['ok' => false, 'error' => 'Unknown action'], 400);

@@ -10,16 +10,19 @@
     <meta name="description"
         content="Elevate your online presence with Crafto - a modern, versatile, multipurpose Bootstrap 5 responsive HTML5, SCSS template using highly creative 60+ ready demos.">
     <!-- favicon icon -->
-    <link rel="shortcut icon" href="images/logo.jpg">
+    <link rel="shortcut icon" href="<?= e(app_url('assets/images/logo.jpg')) ?>">
     <!-- google fonts preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <!-- style sheets and font icons  -->
-    <link rel="stylesheet" href="css/vendors.min.css?v=20261015" />
-    <link rel="stylesheet" href="css/icon.min.css?v=20261015" />
-    <link rel="stylesheet" href="css/style.min.css?v=20261015" />
-    <link rel="stylesheet" href="css/responsive.min.css?v=20261015" />
-    <link rel="stylesheet" href="demos/branding-agency/branding-agency.css?v=20261015" />
+    <link rel="stylesheet" href="<?= e(app_url('assets/css/vendors.min.css?v=20261015')) ?>" />
+    <link rel="stylesheet" href="<?= e(app_url('assets/css/icon.min.css?v=20261015')) ?>" />
+    <link rel="stylesheet" href="<?= e(app_url('assets/css/style.min.css?v=20261015')) ?>" />
+    <link rel="stylesheet" href="<?= e(app_url('assets/css/responsive.min.css?v=20261015')) ?>" />
+    <link rel="stylesheet" href="<?= e(app_url('assets/css/branding-agency.css?v=20261015')) ?>" />
+    <?php if (app_route() === 'home'): ?>
+    <link rel="stylesheet" href="<?= e(app_url('assets/css/home.css')) ?>" />
+    <?php endif; ?>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
@@ -31,10 +34,10 @@
         <nav class="navbar navbar-expand-lg header-light bg-white header-reverse glass-effect">
             <div class="container-fluid">
                 <div class="col-auto col-lg-2 me-lg-0 me-auto">
-                    <a class="navbar-brand" href="index.html">
-                        <img src="images/logo.jpg" data-at2x="images/logo.jpg" alt="" class="default-logo">
-                        <img src="images/logo.jpg" data-at2x="images/logo.jpg" alt="" class="alt-logo">
-                        <img src="images/logo.jpg" data-at2x="images/logo.jpg" alt="" class="mobile-logo">
+                    <a class="navbar-brand" href="<?= e(app_url()) ?>">
+                        <img src="<?= e(app_url('assets/images/logo.jpg')) ?>" data-at2x="<?= e(app_url('assets/images/logo.jpg')) ?>" alt="Suruchi Creation" class="default-logo">
+                        <img src="<?= e(app_url('assets/images/logo.jpg')) ?>" data-at2x="<?= e(app_url('assets/images/logo.jpg')) ?>" alt="Suruchi Creation" class="alt-logo">
+                        <img src="<?= e(app_url('assets/images/logo.jpg')) ?>" data-at2x="<?= e(app_url('assets/images/logo.jpg')) ?>" alt="Suruchi Creation" class="mobile-logo">
                     </a>
                 </div>
                 <div class="col-auto ms-auto md-ms-0 menu-order position-static">
@@ -47,16 +50,16 @@
                     </button>
                     <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
                         <ul class="navbar-nav alt-font">
-                            <li class="nav-item"><a href="index.php" class="nav-link">Home</a></li>
-                            <li class="nav-item"><a href="about.php" class="nav-link">About us</a>
+                            <li class="nav-item"><a href="<?= e(app_url()) ?>" class="nav-link">Home</a></li>
+                            <li class="nav-item"><a href="<?= e(app_url('about')) ?>" class="nav-link">About us</a>
                             </li>
-                            <li class="nav-item"><a href="4fs.php" class="nav-link">4Fs</a>
+                            <li class="nav-item"><a href="<?= e(app_url('4fs')) ?>" class="nav-link">4Fs</a>
                             </li>
-                            <li class="nav-item"><a href="desgin-research.php" class="nav-link">Design research</a>
+                            <li class="nav-item"><a href="<?= e(app_url('design-research')) ?>" class="nav-link">Design research</a>
                             </li>
-                            <li class="nav-item"><a href="product.php" class="nav-link">Product</a>
+                            <li class="nav-item"><a href="<?= e(app_url('product')) ?>" class="nav-link">Product</a>
                             </li>
-                            <li class="nav-item"><a href="contact.php"
+                            <li class="nav-item"><a href="<?= e(app_url('contact')) ?>"
                                     class="nav-link">Contact</a></li>
                         </ul>
                     </div>
@@ -64,7 +67,7 @@
                 <div class="col-auto text-end d-none d-sm-flex">
                     <div class="header-icon">
                         <div class="header-button">
-                            <a href="demo-branding-agency-contact.html"
+                            <a href="<?= e(app_url('contact')) ?>"
                                 class="btn border-1 btn-transparent-light-gray btn-medium left-icon btn-switch-text">
                                 <span>
                                     <span><i class="fa-regular fa-envelope"></i></span>

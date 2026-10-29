@@ -1,4 +1,7 @@
-<?php include 'includes/header.php'; ?>
+<?php
+$productPage = page_all('product');
+include __DIR__ . '/../../includes/header.php';
+?>
 
 
         <!-- start banner -->
@@ -6,24 +9,24 @@
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-12 text-center" data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 600, "delay":0, "staggervalue": 300, "easing": "easeOutQuad" }'>
-                        <h1 class="text-dark-gray fw-600 alt-font ls-minus-3px sm-ls-minus-4px" data-fancy-text='{ "opacity": [0, 1], "translateY": [50, 0], "filter": ["blur(20px)", "blur(0px)"], "string": ["Worked with global brands & agencies at the intersection of flat design and dynamic digital technology."], "duration": 400, "delay": 0, "speed": 20, "easing": "easeOutQuad" }'></h1>
+                        <h1 class="text-dark-gray fw-600 alt-font ls-minus-3px sm-ls-minus-4px" data-fancy-text='{ "opacity": [0, 1], "translateY": [50, 0], "filter": ["blur(20px)", "blur(0px)"], "string": [<?= json_encode($productPage['intro']['heading'], JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_TAG | JSON_HEX_AMP) ?>], "duration": 400, "delay": 0, "speed": 20, "easing": "easeOutQuad" }'></h1>
                     </div>
                 </div>
             </div>
         </section>
         <!-- end banner -->
-        <!-- start section --> 
+        <!-- start section -->
         <section class="pt-3 pb-0 lg-pb-50px">
             <div class="container">
                 <div class="row align-items-center justify-content-center">
                     <div class="col-lg-6 col-md-6 text-md-end text-center sm-mb-30px">
                         <div class="position-relative" data-anime='{"translateX": [50, 0], "scale": [0.7, 1], "opacity": [0,1], "duration": 800, "delay": 200, "staggervalue": 300, "easing": "easeOutQuad" }'>
-                            <img src="images/demo-photography-about-round-text.png" class="animation-rotation position-relative z-index-2" alt="">
-                            <div class="absolute-middle-center w-100 z-index-1"><img src="images/demo-photography-about-round-logo.png" alt=""></div> 
+                            <img src="assets/images/demo-photography-about-round-text.png" class="animation-rotation position-relative z-index-2" alt="">
+                            <div class="absolute-middle-center w-100 z-index-1"><img src="assets/images/demo-photography-about-round-logo.png" alt=""></div>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6 last-paragraph-no-margin text-md-start text-center">
-                        <p class="text-dark-gray w-85 lg-w-100 sm-w-90 sm-mx-auto">Creating products with a strong identity. We provide brilliant ideas and adding the world called success brand. We are excited for our work.</p>
+                        <p class="text-dark-gray w-85 lg-w-100 sm-w-90 sm-mx-auto"><?= e($productPage['intro']['text']) ?></p>
                     </div>
                 </div>
             </div>
@@ -41,16 +44,16 @@
                                 <div class="portfolio-box" data-bottom-top="transform: translate3d(0px, 50px, 0px);" data-top-bottom="transform: translate3d(0px, -50px, 0px);">
                                     <div class="portfolio-image bg-extra-medium-gray">
                                         <a href="demo-branding-agency-single-project-slider.html">
-                                            <img src="images/demo-scattered-portfolio-01.jpg" alt="" /> 
+                                            <img src="<?= e($productPage['projects']['items'][0]['image']) ?>" alt="" />
                                         </a>
                                     </div>
                                     <div class="portfolio-caption pt-35px pb-35px sm-pt-20px sm-pb-0">
-                                        <a href="demo-branding-agency-single-project-slider.html" class="text-dark-gray ls-minus-05px ls-minus-05px fw-600 fs-22 alt-font">Tailoring</a>
+                                        <a href="demo-branding-agency-single-project-slider.html" class="text-dark-gray ls-minus-05px ls-minus-05px fw-600 fs-22 alt-font"><?= e($productPage['projects']['items'][0]['title']) ?></a>
                                         <span class="d-inline-block align-middle w-10px separator-line-1px bg-light-gray ms-5px me-5px"></span>
-                                        <div class="d-inline-block">Branding</div>
+                                        <div class="d-inline-block"><?= e($productPage['projects']['items'][0]['category']) ?></div>
                                     </div>
                                 </div>
-                            </li>  
+                            </li>
                             <!-- end portfolio item -->
                         </ul>
                     </div>
@@ -62,21 +65,21 @@
                                 <div class="portfolio-box" data-bottom-top="transform: translate3d(0px, 100px, 0px)" data-top-bottom="transform: translate3d(0px, 180px, 0px);">
                                     <div class="portfolio-image bg-extra-medium-gray">
                                         <a href="demo-branding-agency-single-project-slider.html">
-                                            <img src="images/demo-scattered-portfolio-02.jpg" alt="" /> 
+                                            <img src="<?= e($productPage['projects']['items'][1]['image']) ?>" alt="" />
                                         </a>
                                     </div>
                                     <div class="portfolio-caption pt-35px pb-35px sm-pt-20px sm-pb-0">
-                                        <a href="demo-branding-agency-single-project-slider.html" class="text-dark-gray ls-minus-05px fw-600 fs-22 alt-font">Designblast</a>
+                                        <a href="demo-branding-agency-single-project-slider.html" class="text-dark-gray ls-minus-05px fw-600 fs-22 alt-font"><?= e($productPage['projects']['items'][1]['title']) ?></a>
                                         <span class="d-inline-block align-middle w-10px separator-line-1px bg-light-gray ms-5px me-5px"></span>
-                                        <div class="d-inline-block">Photography</div>
+                                        <div class="d-inline-block"><?= e($productPage['projects']['items'][1]['category']) ?></div>
                                     </div>
                                 </div>
-                            </li>  
+                            </li>
                             <!-- end portfolio item -->
                         </ul>
                     </div>
                     <div class="col-12 filter-content mt-20 lg-mt-0 mb-3 lg-mb-0">
-                        
+
                     </div>
                     <div class="col-xl-7 col-md-7 filter-content mt-5 lg-mt-0">
                         <ul class="portfolio-simple portfolio-wrapper grid-loading grid grid-4col xxl-grid-4col xl-grid-4col lg-grid-4col md-grid-2col sm-grid-2col xs-grid-1col gutter-extra-large text-center">
@@ -86,16 +89,16 @@
                                 <div class="portfolio-box" data-bottom-top="transform: translate3d(0px, 50px, 0px);" data-top-bottom="transform: translate3d(0px, -50px, 0px);">
                                     <div class="portfolio-image bg-extra-medium-gray">
                                         <a href="demo-branding-agency-single-project-slider.html">
-                                            <img src="images/demo-scattered-portfolio-04.jpg" alt="" /> 
+                                            <img src="<?= e($productPage['projects']['items'][2]['image']) ?>" alt="" />
                                         </a>
                                     </div>
                                     <div class="portfolio-caption pt-35px pb-35px sm-pt-20px sm-pb-0">
-                                        <a href="demo-branding-agency-single-project-slider.html" class="text-dark-gray ls-minus-05px fw-600 fs-22 alt-font">Violator</a>
+                                        <a href="demo-branding-agency-single-project-slider.html" class="text-dark-gray ls-minus-05px fw-600 fs-22 alt-font"><?= e($productPage['projects']['items'][2]['title']) ?></a>
                                         <span class="d-inline-block align-middle w-10px separator-line-1px bg-light-gray ms-5px me-5px"></span>
-                                        <div class="d-inline-block">Marketing</div>
+                                        <div class="d-inline-block"><?= e($productPage['projects']['items'][2]['category']) ?></div>
                                     </div>
                                 </div>
-                            </li>  
+                            </li>
                             <!-- end portfolio item -->
                         </ul>
                     </div>
@@ -107,21 +110,21 @@
                                 <div class="portfolio-box" data-bottom-top="transform: translate3d(0px, -50px, 0px);" data-top-bottom="transform: translate3d(0px, 50px, 0px);">
                                     <div class="portfolio-image bg-extra-medium-gray">
                                         <a href="demo-branding-agency-single-project-slider.html">
-                                            <img src="images/demo-scattered-portfolio-05.jpg" alt="" /> 
+                                            <img src="<?= e($productPage['projects']['items'][3]['image']) ?>" alt="" />
                                         </a>
                                     </div>
                                     <div class="portfolio-caption pt-35px pb-35px sm-pt-20px sm-pb-0">
-                                        <a href="demo-branding-agency-single-project-slider.html" class="text-dark-gray ls-minus-05px fw-600 fs-22 alt-font">Potato</a>
+                                        <a href="demo-branding-agency-single-project-slider.html" class="text-dark-gray ls-minus-05px fw-600 fs-22 alt-font"><?= e($productPage['projects']['items'][3]['title']) ?></a>
                                         <span class="d-inline-block align-middle w-10px separator-line-1px bg-light-gray ms-5px me-5px"></span>
-                                        <div class="d-inline-block">Branding</div>
+                                        <div class="d-inline-block"><?= e($productPage['projects']['items'][3]['category']) ?></div>
                                     </div>
                                 </div>
-                            </li>  
+                            </li>
                             <!-- end portfolio item -->
                         </ul>
                     </div>
                     <div class="col-12 mt-5 lg-mt-0 filter-content">
-                       
+
                     </div>
                 </div>
             </div>
@@ -139,16 +142,16 @@
                                 <div class="portfolio-box" data-bottom-top="transform: translate3d(0px, 50px, 0px);" data-top-bottom="transform: translate3d(0px, -50px, 0px);">
                                     <div class="portfolio-image bg-extra-medium-gray">
                                         <a href="demo-branding-agency-single-project-slider.html">
-                                            <img src="images/demo-scattered-portfolio-01.jpg" alt="" /> 
+                                            <img src="<?= e($productPage['projects']['items'][0]['image']) ?>" alt="" />
                                         </a>
                                     </div>
                                     <div class="portfolio-caption pt-35px pb-35px sm-pt-20px sm-pb-0">
-                                        <a href="demo-branding-agency-single-project-slider.html" class="text-dark-gray ls-minus-05px ls-minus-05px fw-600 fs-22 alt-font">Tailoring</a>
+                                        <a href="demo-branding-agency-single-project-slider.html" class="text-dark-gray ls-minus-05px ls-minus-05px fw-600 fs-22 alt-font"><?= e($productPage['projects']['items'][0]['title']) ?></a>
                                         <span class="d-inline-block align-middle w-10px separator-line-1px bg-light-gray ms-5px me-5px"></span>
-                                        <div class="d-inline-block">Branding</div>
+                                        <div class="d-inline-block"><?= e($productPage['projects']['items'][0]['category']) ?></div>
                                     </div>
                                 </div>
-                            </li>  
+                            </li>
                             <!-- end portfolio item -->
                         </ul>
                     </div>
@@ -160,21 +163,21 @@
                                 <div class="portfolio-box" data-bottom-top="transform: translate3d(0px, 100px, 0px)" data-top-bottom="transform: translate3d(0px, 180px, 0px);">
                                     <div class="portfolio-image bg-extra-medium-gray">
                                         <a href="demo-branding-agency-single-project-slider.html">
-                                            <img src="images/demo-scattered-portfolio-02.jpg" alt="" /> 
+                                            <img src="<?= e($productPage['projects']['items'][1]['image']) ?>" alt="" />
                                         </a>
                                     </div>
                                     <div class="portfolio-caption pt-35px pb-35px sm-pt-20px sm-pb-0">
-                                        <a href="demo-branding-agency-single-project-slider.html" class="text-dark-gray ls-minus-05px fw-600 fs-22 alt-font">Designblast</a>
+                                        <a href="demo-branding-agency-single-project-slider.html" class="text-dark-gray ls-minus-05px fw-600 fs-22 alt-font"><?= e($productPage['projects']['items'][1]['title']) ?></a>
                                         <span class="d-inline-block align-middle w-10px separator-line-1px bg-light-gray ms-5px me-5px"></span>
-                                        <div class="d-inline-block">Photography</div>
+                                        <div class="d-inline-block"><?= e($productPage['projects']['items'][1]['category']) ?></div>
                                     </div>
                                 </div>
-                            </li>  
+                            </li>
                             <!-- end portfolio item -->
                         </ul>
                     </div>
                     <div class="col-12 filter-content mt-20 lg-mt-0 mb-3 lg-mb-0">
-                        
+
                     </div>
                     <div class="col-xl-7 col-md-7 filter-content mt-5 lg-mt-0">
                         <ul class="portfolio-simple portfolio-wrapper grid-loading grid grid-4col xxl-grid-4col xl-grid-4col lg-grid-4col md-grid-2col sm-grid-2col xs-grid-1col gutter-extra-large text-center">
@@ -184,16 +187,16 @@
                                 <div class="portfolio-box" data-bottom-top="transform: translate3d(0px, 50px, 0px);" data-top-bottom="transform: translate3d(0px, -50px, 0px);">
                                     <div class="portfolio-image bg-extra-medium-gray">
                                         <a href="demo-branding-agency-single-project-slider.html">
-                                            <img src="images/demo-scattered-portfolio-04.jpg" alt="" /> 
+                                            <img src="<?= e($productPage['projects']['items'][2]['image']) ?>" alt="" />
                                         </a>
                                     </div>
                                     <div class="portfolio-caption pt-35px pb-35px sm-pt-20px sm-pb-0">
-                                        <a href="demo-branding-agency-single-project-slider.html" class="text-dark-gray ls-minus-05px fw-600 fs-22 alt-font">Violator</a>
+                                        <a href="demo-branding-agency-single-project-slider.html" class="text-dark-gray ls-minus-05px fw-600 fs-22 alt-font"><?= e($productPage['projects']['items'][2]['title']) ?></a>
                                         <span class="d-inline-block align-middle w-10px separator-line-1px bg-light-gray ms-5px me-5px"></span>
-                                        <div class="d-inline-block">Marketing</div>
+                                        <div class="d-inline-block"><?= e($productPage['projects']['items'][2]['category']) ?></div>
                                     </div>
                                 </div>
-                            </li>  
+                            </li>
                             <!-- end portfolio item -->
                         </ul>
                     </div>
@@ -205,21 +208,21 @@
                                 <div class="portfolio-box" data-bottom-top="transform: translate3d(0px, -50px, 0px);" data-top-bottom="transform: translate3d(0px, 50px, 0px);">
                                     <div class="portfolio-image bg-extra-medium-gray">
                                         <a href="demo-branding-agency-single-project-slider.html">
-                                            <img src="images/demo-scattered-portfolio-05.jpg" alt="" /> 
+                                            <img src="<?= e($productPage['projects']['items'][3]['image']) ?>" alt="" />
                                         </a>
                                     </div>
                                     <div class="portfolio-caption pt-35px pb-35px sm-pt-20px sm-pb-0">
-                                        <a href="demo-branding-agency-single-project-slider.html" class="text-dark-gray ls-minus-05px fw-600 fs-22 alt-font">Potato</a>
+                                        <a href="demo-branding-agency-single-project-slider.html" class="text-dark-gray ls-minus-05px fw-600 fs-22 alt-font"><?= e($productPage['projects']['items'][3]['title']) ?></a>
                                         <span class="d-inline-block align-middle w-10px separator-line-1px bg-light-gray ms-5px me-5px"></span>
-                                        <div class="d-inline-block">Branding</div>
+                                        <div class="d-inline-block"><?= e($productPage['projects']['items'][3]['category']) ?></div>
                                     </div>
                                 </div>
-                            </li>  
+                            </li>
                             <!-- end portfolio item -->
                         </ul>
                     </div>
                     <div class="col-12 mt-5 lg-mt-0 filter-content">
-                       
+
                     </div>
                 </div>
             </div>
@@ -237,16 +240,16 @@
                                 <div class="portfolio-box" data-bottom-top="transform: translate3d(0px, 50px, 0px);" data-top-bottom="transform: translate3d(0px, -50px, 0px);">
                                     <div class="portfolio-image bg-extra-medium-gray">
                                         <a href="demo-branding-agency-single-project-slider.html">
-                                            <img src="images/demo-scattered-portfolio-01.jpg" alt="" /> 
+                                            <img src="<?= e($productPage['projects']['items'][0]['image']) ?>" alt="" />
                                         </a>
                                     </div>
                                     <div class="portfolio-caption pt-35px pb-35px sm-pt-20px sm-pb-0">
-                                        <a href="demo-branding-agency-single-project-slider.html" class="text-dark-gray ls-minus-05px ls-minus-05px fw-600 fs-22 alt-font">Tailoring</a>
+                                        <a href="demo-branding-agency-single-project-slider.html" class="text-dark-gray ls-minus-05px ls-minus-05px fw-600 fs-22 alt-font"><?= e($productPage['projects']['items'][0]['title']) ?></a>
                                         <span class="d-inline-block align-middle w-10px separator-line-1px bg-light-gray ms-5px me-5px"></span>
-                                        <div class="d-inline-block">Branding</div>
+                                        <div class="d-inline-block"><?= e($productPage['projects']['items'][0]['category']) ?></div>
                                     </div>
                                 </div>
-                            </li>  
+                            </li>
                             <!-- end portfolio item -->
                         </ul>
                     </div>
@@ -258,21 +261,21 @@
                                 <div class="portfolio-box" data-bottom-top="transform: translate3d(0px, 100px, 0px)" data-top-bottom="transform: translate3d(0px, 180px, 0px);">
                                     <div class="portfolio-image bg-extra-medium-gray">
                                         <a href="demo-branding-agency-single-project-slider.html">
-                                            <img src="images/demo-scattered-portfolio-02.jpg" alt="" /> 
+                                            <img src="<?= e($productPage['projects']['items'][1]['image']) ?>" alt="" />
                                         </a>
                                     </div>
                                     <div class="portfolio-caption pt-35px pb-35px sm-pt-20px sm-pb-0">
-                                        <a href="demo-branding-agency-single-project-slider.html" class="text-dark-gray ls-minus-05px fw-600 fs-22 alt-font">Designblast</a>
+                                        <a href="demo-branding-agency-single-project-slider.html" class="text-dark-gray ls-minus-05px fw-600 fs-22 alt-font"><?= e($productPage['projects']['items'][1]['title']) ?></a>
                                         <span class="d-inline-block align-middle w-10px separator-line-1px bg-light-gray ms-5px me-5px"></span>
-                                        <div class="d-inline-block">Photography</div>
+                                        <div class="d-inline-block"><?= e($productPage['projects']['items'][1]['category']) ?></div>
                                     </div>
                                 </div>
-                            </li>  
+                            </li>
                             <!-- end portfolio item -->
                         </ul>
                     </div>
                     <div class="col-12 filter-content mt-20 lg-mt-0 mb-3 lg-mb-0">
-                        
+
                     </div>
                     <div class="col-xl-7 col-md-7 filter-content mt-5 lg-mt-0">
                         <ul class="portfolio-simple portfolio-wrapper grid-loading grid grid-4col xxl-grid-4col xl-grid-4col lg-grid-4col md-grid-2col sm-grid-2col xs-grid-1col gutter-extra-large text-center">
@@ -282,16 +285,16 @@
                                 <div class="portfolio-box" data-bottom-top="transform: translate3d(0px, 50px, 0px);" data-top-bottom="transform: translate3d(0px, -50px, 0px);">
                                     <div class="portfolio-image bg-extra-medium-gray">
                                         <a href="demo-branding-agency-single-project-slider.html">
-                                            <img src="images/demo-scattered-portfolio-04.jpg" alt="" /> 
+                                            <img src="<?= e($productPage['projects']['items'][2]['image']) ?>" alt="" />
                                         </a>
                                     </div>
                                     <div class="portfolio-caption pt-35px pb-35px sm-pt-20px sm-pb-0">
-                                        <a href="demo-branding-agency-single-project-slider.html" class="text-dark-gray ls-minus-05px fw-600 fs-22 alt-font">Violator</a>
+                                        <a href="demo-branding-agency-single-project-slider.html" class="text-dark-gray ls-minus-05px fw-600 fs-22 alt-font"><?= e($productPage['projects']['items'][2]['title']) ?></a>
                                         <span class="d-inline-block align-middle w-10px separator-line-1px bg-light-gray ms-5px me-5px"></span>
-                                        <div class="d-inline-block">Marketing</div>
+                                        <div class="d-inline-block"><?= e($productPage['projects']['items'][2]['category']) ?></div>
                                     </div>
                                 </div>
-                            </li>  
+                            </li>
                             <!-- end portfolio item -->
                         </ul>
                     </div>
@@ -303,21 +306,21 @@
                                 <div class="portfolio-box" data-bottom-top="transform: translate3d(0px, -50px, 0px);" data-top-bottom="transform: translate3d(0px, 50px, 0px);">
                                     <div class="portfolio-image bg-extra-medium-gray">
                                         <a href="demo-branding-agency-single-project-slider.html">
-                                            <img src="images/demo-scattered-portfolio-05.jpg" alt="" /> 
+                                            <img src="<?= e($productPage['projects']['items'][3]['image']) ?>" alt="" />
                                         </a>
                                     </div>
                                     <div class="portfolio-caption pt-35px pb-35px sm-pt-20px sm-pb-0">
-                                        <a href="demo-branding-agency-single-project-slider.html" class="text-dark-gray ls-minus-05px fw-600 fs-22 alt-font">Potato</a>
+                                        <a href="demo-branding-agency-single-project-slider.html" class="text-dark-gray ls-minus-05px fw-600 fs-22 alt-font"><?= e($productPage['projects']['items'][3]['title']) ?></a>
                                         <span class="d-inline-block align-middle w-10px separator-line-1px bg-light-gray ms-5px me-5px"></span>
-                                        <div class="d-inline-block">Branding</div>
+                                        <div class="d-inline-block"><?= e($productPage['projects']['items'][3]['category']) ?></div>
                                     </div>
                                 </div>
-                            </li>  
+                            </li>
                             <!-- end portfolio item -->
                         </ul>
                     </div>
                     <div class="col-12 mt-5 lg-mt-0 filter-content">
-                       
+
                     </div>
                 </div>
             </div>
@@ -335,16 +338,16 @@
                                 <div class="portfolio-box" data-bottom-top="transform: translate3d(0px, 50px, 0px);" data-top-bottom="transform: translate3d(0px, -50px, 0px);">
                                     <div class="portfolio-image bg-extra-medium-gray">
                                         <a href="demo-branding-agency-single-project-slider.html">
-                                            <img src="images/demo-scattered-portfolio-01.jpg" alt="" /> 
+                                            <img src="<?= e($productPage['projects']['items'][0]['image']) ?>" alt="" />
                                         </a>
                                     </div>
                                     <div class="portfolio-caption pt-35px pb-35px sm-pt-20px sm-pb-0">
-                                        <a href="demo-branding-agency-single-project-slider.html" class="text-dark-gray ls-minus-05px ls-minus-05px fw-600 fs-22 alt-font">Tailoring</a>
+                                        <a href="demo-branding-agency-single-project-slider.html" class="text-dark-gray ls-minus-05px ls-minus-05px fw-600 fs-22 alt-font"><?= e($productPage['projects']['items'][0]['title']) ?></a>
                                         <span class="d-inline-block align-middle w-10px separator-line-1px bg-light-gray ms-5px me-5px"></span>
-                                        <div class="d-inline-block">Branding</div>
+                                        <div class="d-inline-block"><?= e($productPage['projects']['items'][0]['category']) ?></div>
                                     </div>
                                 </div>
-                            </li>  
+                            </li>
                             <!-- end portfolio item -->
                         </ul>
                     </div>
@@ -356,21 +359,21 @@
                                 <div class="portfolio-box" data-bottom-top="transform: translate3d(0px, 100px, 0px)" data-top-bottom="transform: translate3d(0px, 180px, 0px);">
                                     <div class="portfolio-image bg-extra-medium-gray">
                                         <a href="demo-branding-agency-single-project-slider.html">
-                                            <img src="images/demo-scattered-portfolio-02.jpg" alt="" /> 
+                                            <img src="<?= e($productPage['projects']['items'][1]['image']) ?>" alt="" />
                                         </a>
                                     </div>
                                     <div class="portfolio-caption pt-35px pb-35px sm-pt-20px sm-pb-0">
-                                        <a href="demo-branding-agency-single-project-slider.html" class="text-dark-gray ls-minus-05px fw-600 fs-22 alt-font">Designblast</a>
+                                        <a href="demo-branding-agency-single-project-slider.html" class="text-dark-gray ls-minus-05px fw-600 fs-22 alt-font"><?= e($productPage['projects']['items'][1]['title']) ?></a>
                                         <span class="d-inline-block align-middle w-10px separator-line-1px bg-light-gray ms-5px me-5px"></span>
-                                        <div class="d-inline-block">Photography</div>
+                                        <div class="d-inline-block"><?= e($productPage['projects']['items'][1]['category']) ?></div>
                                     </div>
                                 </div>
-                            </li>  
+                            </li>
                             <!-- end portfolio item -->
                         </ul>
                     </div>
                     <div class="col-12 filter-content mt-20 lg-mt-0 mb-3 lg-mb-0">
-                        
+
                     </div>
                     <div class="col-xl-7 col-md-7 filter-content mt-5 lg-mt-0">
                         <ul class="portfolio-simple portfolio-wrapper grid-loading grid grid-4col xxl-grid-4col xl-grid-4col lg-grid-4col md-grid-2col sm-grid-2col xs-grid-1col gutter-extra-large text-center">
@@ -380,16 +383,16 @@
                                 <div class="portfolio-box" data-bottom-top="transform: translate3d(0px, 50px, 0px);" data-top-bottom="transform: translate3d(0px, -50px, 0px);">
                                     <div class="portfolio-image bg-extra-medium-gray">
                                         <a href="demo-branding-agency-single-project-slider.html">
-                                            <img src="images/demo-scattered-portfolio-04.jpg" alt="" /> 
+                                            <img src="<?= e($productPage['projects']['items'][2]['image']) ?>" alt="" />
                                         </a>
                                     </div>
                                     <div class="portfolio-caption pt-35px pb-35px sm-pt-20px sm-pb-0">
-                                        <a href="demo-branding-agency-single-project-slider.html" class="text-dark-gray ls-minus-05px fw-600 fs-22 alt-font">Violator</a>
+                                        <a href="demo-branding-agency-single-project-slider.html" class="text-dark-gray ls-minus-05px fw-600 fs-22 alt-font"><?= e($productPage['projects']['items'][2]['title']) ?></a>
                                         <span class="d-inline-block align-middle w-10px separator-line-1px bg-light-gray ms-5px me-5px"></span>
-                                        <div class="d-inline-block">Marketing</div>
+                                        <div class="d-inline-block"><?= e($productPage['projects']['items'][2]['category']) ?></div>
                                     </div>
                                 </div>
-                            </li>  
+                            </li>
                             <!-- end portfolio item -->
                         </ul>
                     </div>
@@ -401,28 +404,28 @@
                                 <div class="portfolio-box" data-bottom-top="transform: translate3d(0px, -50px, 0px);" data-top-bottom="transform: translate3d(0px, 50px, 0px);">
                                     <div class="portfolio-image bg-extra-medium-gray">
                                         <a href="demo-branding-agency-single-project-slider.html">
-                                            <img src="images/demo-scattered-portfolio-05.jpg" alt="" /> 
+                                            <img src="<?= e($productPage['projects']['items'][3]['image']) ?>" alt="" />
                                         </a>
                                     </div>
                                     <div class="portfolio-caption pt-35px pb-35px sm-pt-20px sm-pb-0">
-                                        <a href="demo-branding-agency-single-project-slider.html" class="text-dark-gray ls-minus-05px fw-600 fs-22 alt-font">Potato</a>
+                                        <a href="demo-branding-agency-single-project-slider.html" class="text-dark-gray ls-minus-05px fw-600 fs-22 alt-font"><?= e($productPage['projects']['items'][3]['title']) ?></a>
                                         <span class="d-inline-block align-middle w-10px separator-line-1px bg-light-gray ms-5px me-5px"></span>
-                                        <div class="d-inline-block">Branding</div>
+                                        <div class="d-inline-block"><?= e($productPage['projects']['items'][3]['category']) ?></div>
                                     </div>
                                 </div>
-                            </li>  
+                            </li>
                             <!-- end portfolio item -->
                         </ul>
                     </div>
                     <div class="col-12 mt-5 lg-mt-0 filter-content">
-                       
+
                     </div>
                 </div>
             </div>
         </section>
         <!-- end section -->
-       
 
 
 
-<?php include 'includes/footer.php'; ?>
+
+<?php include __DIR__ . '/../../includes/footer.php'; ?>

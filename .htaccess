@@ -1,0 +1,16 @@
+Options -Indexes
+RewriteEngine On
+
+RewriteRule ^(data|includes|database)(/|$) - [F,L]
+RewriteRule ^admin/?$ admin/dashboard.php [L]
+RewriteRule ^(admin|api)(/|$) - [L]
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+RewriteRule ^(about|4fs|product|contact)\.php$ $1 [R=301,L]
+RewriteRule ^desgin-research\.php$ design-research [R=301,L]
+RewriteRule ^$ index.php?page=home [QSA,L]
+RewriteRule ^(about|4fs|design-research|product|contact)/$ $1 [R=301,L]
+RewriteRule ^(about|4fs|design-research|product|contact)/?$ index.php?page=$1 [QSA,L]
+RewriteRule ^(.+)$ index.php?page=$1 [QSA,L]

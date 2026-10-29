@@ -1,4 +1,7 @@
-<?php include 'includes/header.php'; ?>
+<?php
+$aboutPage = page_all('about');
+include __DIR__ . '/../../includes/header.php';
+?>
 
 
 
@@ -7,16 +10,16 @@
         <div class="row g-0">
             <div class="col-xl-4 col-lg-5 d-flex justify-content-center align-items-center ps-10 xxl-ps-6 xl-ps-4 md-ps-4 sm-ps-0 position-relative order-2 order-lg-1" data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 600, "delay":0, "staggervalue": 300, "easing": "easeOutQuad" }'>
                 <div class="vertical-title-center align-items-center justify-content-center flex-shrink-0 w-75px sm-w-50px">
-                    <h1 class="title fs-15 alt-font text-dark-gray fw-700 text-uppercase ls-1px text-uppercase d-flex w-auto align-items-center m-0" data-fancy-text='{ "opacity": [0, 1], "translateY": [50, 0], "filter": ["blur(20px)", "blur(0px)"], "string": ["about About us"], "duration": 400, "delay": 0, "speed": 50, "easing": "easeOutQuad" }'></h1>
+                    <h1 class="title fs-15 alt-font text-dark-gray fw-700 text-uppercase ls-1px text-uppercase d-flex w-auto align-items-center m-0" data-fancy-text='{ "opacity": [0, 1], "translateY": [50, 0], "filter": ["blur(20px)", "blur(0px)"], "string": [<?= json_encode($aboutPage['hero']['eyebrow'], JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_TAG | JSON_HEX_AMP) ?>], "duration": 400, "delay": 0, "speed": 50, "easing": "easeOutQuad" }'></h1>
                 </div>
                 <div class="border-start border-color-extra-medium-gray ps-40px sm-ps-20px position-relative z-index-9">
-                    <h2 class="text-dark-gray fw-600 alt-font outside-box-right-10 xl-outside-box-right-15 lg-outside-box-right-20 md-me-0 sm-mb-0 ls-minus-3px">We are work on delivering unique visual solutions.</h2>
+                    <h2 class="text-dark-gray fw-600 alt-font outside-box-right-10 xl-outside-box-right-15 lg-outside-box-right-20 md-me-0 sm-mb-0 ls-minus-3px"><?= e($aboutPage['hero']['heading']) ?></h2>
                 </div>
             </div>
             <div class="col-xl-8 col-lg-7 position-relative one-half-screen order-1 order-lg-2 md-mb-50px">
                 <div class="overflow-hidden position-relative">
                     <div class="w-100" data-anime='{ "effect": "slide", "direction": "lr", "color": "#f7f7f7", "duration": 1000, "delay": 0 }'>
-                        <img src="images/demo-branding-agency-about-title-bg.jpg" alt="" class="w-100 liquid-parallax" data-parallax-liquid="true" data-parallax-position="top" data-parallax-scale="1.05">
+                        <img src="<?= e($aboutPage['hero']['image']) ?>" alt="" class="w-100 liquid-parallax" data-parallax-liquid="true" data-parallax-position="top" data-parallax-scale="1.05">
                     </div>
                 </div>
             </div>
@@ -29,21 +32,21 @@
     <div class="container">
         <div class="row mb-6 sm-mb-50px">
             <div class="col-md-12 text-center text-md-start" data-anime='{"opacity": [0,1], "duration": 600, "delay":0, "staggervalue": 300, "easing": "easeOutQuad" }'>
-                <div class="fs-140 xxl-fs-100 sm-fs-60 fw-600 text-dark-gray alt-font ls-minus-8px sm-ls-minus-2px" data-bottom-top="transform: translate3d(-50px, 0px, 0px);" data-top-bottom="transform: translate3d(50px, 0px, 0px);">Brand experience</div>
+                <div class="fs-140 xxl-fs-100 sm-fs-60 fw-600 text-dark-gray alt-font ls-minus-8px sm-ls-minus-2px" data-bottom-top="transform: translate3d(-50px, 0px, 0px);" data-top-bottom="transform: translate3d(50px, 0px, 0px);"><?= e($aboutPage['intro']['heading']) ?></div>
             </div>
             <div class="col-12">
                 <div class="row align-items-center align-items-lg-end" data-bottom-top="transform: translate3d(-30px, 0px, 0px);" data-top-bottom="transform: translate3d(30px, 0px, 0px);">
                     <div class="col-lg-3 col-md-4 text-md-end text-center md-mt-30px md-mb-20px" data-anime='{"opacity": [0,1], "duration": 600, "delay":0, "staggervalue": 300, "easing": "easeOutQuad" }'>
                         <div class="position-relative">
-                            <img src="images/demo-branding-agency-about-01.png" class="animation-rotation position-relative z-index-2" alt="">
-                            <div class="absolute-middle-center w-100 z-index-1"><img src="images/demo-branding-agency-about-02.png" alt=""></div>
+                            <img src="assets/images/demo-branding-agency-about-01.png" class="animation-rotation position-relative z-index-2" alt="">
+                            <div class="absolute-middle-center w-100 z-index-1"><img src="assets/images/demo-branding-agency-about-02.png" alt=""></div>
                         </div>
                     </div>
                     <div class="col-lg-5 col-md-6 text-center text-md-start" data-anime='{"opacity": [0,1], "duration": 600, "delay":0, "staggervalue": 300, "easing": "easeOutQuad" }'>
-                        <div class="fs-140 xxl-fs-100 sm-fs-60 fw-600 text-dark-gray alt-font ls-minus-8px sm-ls-minus-2px">About us</div>
+                        <div class="fs-140 xxl-fs-100 sm-fs-60 fw-600 text-dark-gray alt-font ls-minus-8px sm-ls-minus-2px"><?= e($aboutPage['intro']['subheading']) ?></div>
                     </div>
                     <div class="col-lg-4 last-paragraph-no-margin md-mt-30px" data-anime='{"opacity": [0,1], "duration": 600, "delay":0, "staggervalue": 300, "easing": "easeOutQuad" }'>
-                        <p class="w-95 md-w-80 mx-auto text-center text-lg-start sm-w-100">Creating products with a strong identity. We provide brilliant ideas and adding the world called success brand. </p>
+                        <p class="w-95 md-w-80 mx-auto text-center text-lg-start sm-w-100"><?= e($aboutPage['intro']['text']) ?></p>
                     </div>
                 </div>
             </div>
@@ -51,26 +54,26 @@
         <div class="row g-0 counter-style-04" data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 600, "delay":0, "staggervalue": 300, "easing": "easeOutQuad" }'>
             <div class="col-lg-3 col-md-6 feature-box text-start hover-box border-start sm-border border-color-extra-medium-gray ps-35px pe-35px pt-25px pb-25px lg-ps-25px lg-pe-25px md-ps-35px md-pe-35px md-mb-50px sm-mb-30px">
                 <div class="feature-box-content">
-                    <p class="text-dark-gray mb-20 sm-mb-10 fw-500 w-90 fs-17 lh-28">Users on marketplaces we've created in 2023.</p>
-                    <h2 class="vertical-counter d-inline-flex text-dark-gray fw-700 ls-minus-2px mt-25 alt-font mb-0" data-text="+" data-to="8500"><sup class="text-dark-gray top-0"><i class="feather icon-feather-arrow-up icon-small"></i></sup></h2>
+                    <p class="text-dark-gray mb-20 sm-mb-10 fw-500 w-90 fs-17 lh-28"><?= e($aboutPage['counters']['items'][0]['text']) ?></p>
+                    <h2 class="vertical-counter d-inline-flex text-dark-gray fw-700 ls-minus-2px mt-25 alt-font mb-0" data-text="<?= e($aboutPage['counters']['items'][0]['suffix']) ?>" data-to="<?= e($aboutPage['counters']['items'][0]['number']) ?>"><sup class="text-dark-gray top-0"><i class="feather icon-feather-arrow-up icon-small"></i></sup></h2>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 feature-box text-start hover-box border-start sm-border border-color-extra-medium-gray md-border-end ps-35px pe-35px pt-25px pb-25px lg-ps-25px lg-pe-25px md-mb-50px sm-mb-30px">
                 <div class="feature-box-content">
-                    <p class="text-dark-gray mb-20 sm-mb-10 fw-500 w-90 fs-17 lh-28">Successfully finished projects with creativity. </p>
-                    <h2 class="vertical-counter d-inline-flex text-dark-gray fw-700 ls-minus-2px mt-25 alt-font mb-0" data-text="+" data-to="660"><sup class="text-dark-gray top-0"><i class="feather icon-feather-arrow-up icon-small"></i></sup></h2>
+                    <p class="text-dark-gray mb-20 sm-mb-10 fw-500 w-90 fs-17 lh-28"><?= e($aboutPage['counters']['items'][1]['text']) ?></p>
+                    <h2 class="vertical-counter d-inline-flex text-dark-gray fw-700 ls-minus-2px mt-25 alt-font mb-0" data-text="<?= e($aboutPage['counters']['items'][1]['suffix']) ?>" data-to="<?= e($aboutPage['counters']['items'][1]['number']) ?>"><sup class="text-dark-gray top-0"><i class="feather icon-feather-arrow-up icon-small"></i></sup></h2>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 feature-box text-start hover-box border-start sm-border border-color-extra-medium-gray ps-35px pe-35px pt-25px pb-25px lg-ps-25px lg-pe-25px sm-mb-30px">
                 <div class="feature-box-content">
-                    <p class="text-dark-gray mb-20 sm-mb-10 fw-500 w-90 fs-17 lh-28">Monthly visitors on our e-Commerce platform.</p>
-                    <h2 class="vertical-counter d-inline-flex text-dark-gray fw-700 ls-minus-2px mt-25 alt-font mb-0" data-text="+" data-to="6834"><sup class="text-dark-gray top-0"><i class="feather icon-feather-arrow-up icon-small"></i></sup></h2>
+                    <p class="text-dark-gray mb-20 sm-mb-10 fw-500 w-90 fs-17 lh-28"><?= e($aboutPage['counters']['items'][2]['text']) ?></p>
+                    <h2 class="vertical-counter d-inline-flex text-dark-gray fw-700 ls-minus-2px mt-25 alt-font mb-0" data-text="<?= e($aboutPage['counters']['items'][2]['suffix']) ?>" data-to="<?= e($aboutPage['counters']['items'][2]['number']) ?>"><sup class="text-dark-gray top-0"><i class="feather icon-feather-arrow-up icon-small"></i></sup></h2>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 feature-box text-start hover-box border-start sm-border border-color-extra-medium-gray md-border-end ps-35px pe-35px pt-25px pb-25px lg-ps-25px lg-pe-25px">
                 <div class="feature-box-content">
-                    <p class="text-dark-gray mb-20 sm-mb-10 fw-500 w-90 fs-17 lh-28">Onboarding conversions growth increased.</p>
-                    <h2 class="vertical-counter d-inline-flex text-dark-gray fw-700 ls-minus-2px mt-25 alt-font mb-0" data-text="%" data-to="38"><sup class="text-dark-gray top-0"><i class="feather icon-feather-arrow-up icon-small"></i></sup></h2>
+                    <p class="text-dark-gray mb-20 sm-mb-10 fw-500 w-90 fs-17 lh-28"><?= e($aboutPage['counters']['items'][3]['text']) ?></p>
+                    <h2 class="vertical-counter d-inline-flex text-dark-gray fw-700 ls-minus-2px mt-25 alt-font mb-0" data-text="<?= e($aboutPage['counters']['items'][3]['suffix']) ?>" data-to="<?= e($aboutPage['counters']['items'][3]['number']) ?>"><sup class="text-dark-gray top-0"><i class="feather icon-feather-arrow-up icon-small"></i></sup></h2>
                 </div>
             </div>
         </div>
@@ -84,13 +87,13 @@
             <div class="col-lg-6 position-relative">
                 <div class="row align-items-center position-relative md-mb-15" data-anime='{ "opacity": [0,1], "duration": 600, "delay":0, "staggervalue": 300, "easing": "easeOutQuad" }'>
                     <div class="col-md-5 sm-mb-30px" data-bottom-top="transform: translateY(50px)" data-top-bottom="transform: translateY(-50px)">
-                        <img src="images/demo-branding-agency-about-05.jpg" alt="" />
+                        <img src="assets/images/demo-branding-agency-about-05.jpg" alt="" />
                     </div>
                     <div class="col-lg-7 col-md-7 sm-mb-30px text-end" data-bottom-top="transform: translateY(-30px)" data-top-bottom="transform: translateY(30px)">
-                        <img src="images/demo-branding-agency-about-04.jpg" alt="" class="box-shadow-quadruple-large md-w-80 sm-w-100" />
+                        <img src="assets/images/demo-branding-agency-about-04.jpg" alt="" class="box-shadow-quadruple-large md-w-80 sm-w-100" />
                     </div>
                     <div class="w-50 sm-w-100 overflow-hidden position-absolute sm-position-relative left-140px bottom-minus-200px sm-bottom-0px sm-left-0px p-0 sm-ps-15px sm-pe-15px" data-shadow-animation="true" data-animation-delay="100" data-bottom-top="transform: translateY(20px)" data-top-bottom="transform: translateY(-20px)">
-                        <img src="images/demo-branding-agency-about-03.jpg" alt="" class="box-shadow-quadruple-large w-100" />
+                        <img src="assets/images/demo-branding-agency-about-03.jpg" alt="" class="box-shadow-quadruple-large w-100" />
                     </div>
                 </div>
             </div>
@@ -122,22 +125,22 @@
             <!-- end client item -->
             <!-- start client item -->
             <div class="col client-box text-center md-mb-35px">
-                <a href="#"><img src="images/logo-logitech.svg" class="h-35px" alt=""></a>
+                <a href="#"><img src="assets/images/logo-logitech.svg" class="h-35px" alt=""></a>
             </div>
             <!-- end client item -->
             <!-- start client item -->
             <div class="col client-box text-center md-mb-35px">
-                <a href="#"><img src="images/logo-monday.svg" class="h-35px" alt=""></a>
+                <a href="#"><img src="assets/images/logo-monday.svg" class="h-35px" alt=""></a>
             </div>
             <!-- end client item -->
             <!-- start client item -->
             <div class="col client-box text-center sm-mb-35px">
-                <a href="#"><img src="images/logo-google.svg" class="h-35px" alt=""></a>
+                <a href="#"><img src="assets/images/logo-google.svg" class="h-35px" alt=""></a>
             </div>
             <!-- end client item -->
             <!-- start client item -->
             <div class="col client-box text-center">
-                <a href="#"><img src="images/logo-paypal.svg" class="h-35px" alt=""></a>
+                <a href="#"><img src="assets/images/logo-paypal.svg" class="h-35px" alt=""></a>
             </div>
             <!-- end client item -->
         </div>
@@ -151,14 +154,14 @@
             <div class="col-lg-6">
                 <div class="outside-box-left-20 md-outside-box-left-0 overflow-hidden position-relative" data-parallax-liquid="true" data-parallax-transition="2" data-parallax-position="top">
                     <div class="liquid-parallax" data-parallax-liquid="true" data-parallax-position="bottom" data-parallax-scale="1.1" data-parallax-scale-fraction="0.0001">
-                        <img class="w-100" src="images/demo-branding-agency-about-06.jpg" alt="">
+                        <img class="w-100" src="<?= e($aboutPage['story']['image']) ?>" alt="">
                     </div>
                 </div>
             </div>
             <div class="col-xl-5 col-lg-6 offset-xl-1 z-index-9 md-mt-50px" data-anime='{ "el": "childs", "translateX": [30, 0], "opacity": [0,1], "duration": 300, "delay": 0, "staggervalue": 100, "easing": "easeOutQuad" }'>
-                <h1 class="text-dark-gray alt-font mb-50px fw-600 ls-minus-2px md-mb-25px outside-box-left-15 md-outside-box-left-0 word-break-normal md-w-80 sm-w-100">We create highly unique digital media experiences.</h1>
-                <p class="fs-20 fw-500 ls-minus-05px text-dark-gray mb-15px">Our team is committed to delivering measurable results and achieving tangible success.</p>
-                <p class="w-90 md-w-100 mb-35px">With a client base exceeding 10,000 our About us has established itself as a trusted and reliable partner in delivering exceptional services.</p>
+                <h1 class="text-dark-gray alt-font mb-50px fw-600 ls-minus-2px md-mb-25px outside-box-left-15 md-outside-box-left-0 word-break-normal md-w-80 sm-w-100"><?= e($aboutPage['story']['heading']) ?></h1>
+                <p class="fs-20 fw-500 ls-minus-05px text-dark-gray mb-15px"><?= e($aboutPage['story']['lead']) ?></p>
+                <p class="w-90 md-w-100 mb-35px"><?= e($aboutPage['story']['text']) ?></p>
                 <div class="progress-bar-style-02 mb-40px">
                     <!-- start progress bar item -->
                     <div class="progress mb-15px border-radius-50px fw-600 fs-11 lh-12 text-white bg-white">
@@ -198,33 +201,33 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-5 md-mb-20px sm-mb-0" data-anime='{ "el": "childs", "translateY": [15, 0], "opacity": [0,1], "duration": 600, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
-                <h3 class="text-dark-gray fw-600 ls-minus-2px alt-font">We work with brands and businesses to ensure they shine.</h3>
+                <h3 class="text-dark-gray fw-600 ls-minus-2px alt-font"><?= e($aboutPage['values']['heading']) ?></h3>
             </div>
             <div class="col-lg-7" data-anime='{ "el": "childs", "translateY": [15, 0], "opacity": [0,1], "duration": 600, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
                 <div class="row">
                     <div class="col-md-5">
-                        <div class="fs-19 fw-600 text-dark-gray w-90 xl-w-100 sm-mb-10px">Successfully finished projects with creativity.</div>
+                        <div class="fs-19 fw-600 text-dark-gray w-90 xl-w-100 sm-mb-10px"><?= e($aboutPage['values']['items'][0]['title']) ?></div>
                     </div>
                     <div class="col-md-7 last-paragraph-no-margin">
-                        <p>We value each and every human life placed our hands constantly work towards meeting the expectations of our customers.</p>
+                        <p><?= e($aboutPage['values']['items'][0]['text']) ?></p>
                     </div>
                 </div>
                 <div class="separator-line-1px border-bottom border-color-extra-medium-gray mt-35px mb-35px"></div>
                 <div class="row">
                     <div class="col-md-5">
-                        <div class="fs-19 fw-600 text-dark-gray w-90 xl-w-100 sm-mb-10px">Work together for better branding solutions.</div>
+                        <div class="fs-19 fw-600 text-dark-gray w-90 xl-w-100 sm-mb-10px"><?= e($aboutPage['values']['items'][1]['title']) ?></div>
                     </div>
                     <div class="col-md-7 last-paragraph-no-margin">
-                        <p>We value each and every human life placed our hands constantly work towards meeting the expectations of our customers.</p>
+                        <p><?= e($aboutPage['values']['items'][1]['text']) ?></p>
                     </div>
                 </div>
                 <div class="separator-line-1px border-bottom border-color-extra-medium-gray mt-35px mb-35px"></div>
                 <div class="row">
                     <div class="col-md-5">
-                        <div class="fs-19 fw-600 text-dark-gray w-90 xl-w-100 sm-mb-10px">Committed to deliver unique digital media.</div>
+                        <div class="fs-19 fw-600 text-dark-gray w-90 xl-w-100 sm-mb-10px"><?= e($aboutPage['values']['items'][2]['title']) ?></div>
                     </div>
                     <div class="col-md-7 last-paragraph-no-margin">
-                        <p>We value each and every human life placed our hands constantly work towards meeting the expectations of our customers.</p>
+                        <p><?= e($aboutPage['values']['items'][2]['text']) ?></p>
                     </div>
                 </div>
             </div>
@@ -239,8 +242,8 @@
             <!-- start team member item -->
             <div class="col team-style-10 md-mb-30px">
                 <figure class="mb-0 position-relative overflow-hidden">
-                    <img src="images/demo-branding-agency-team-01.jpg" alt="" />
-                    <img src="images/demo-branding-agency-team-01-hover.jpg" class="hover-switch-image" alt="" />
+                    <img src="assets/images/demo-branding-agency-team-01.jpg" alt="" />
+                    <img src="assets/images/demo-branding-agency-team-01-hover.jpg" class="hover-switch-image" alt="" />
                     <figcaption class="w-100 h-100 d-flex flex-wrap">
                         <div class="social-icon d-flex flex-column flex-shrink-1 mb-auto p-30px ms-auto">
                             <a href="https://www.twitter.com/" target="_blank" class="text-white bg-dark-gray"><i class="fa-brands fa-twitter icon-small"></i></a>
@@ -256,8 +259,8 @@
             <!-- start team member item -->
             <div class="col team-style-10 md-mb-30px">
                 <figure class="mb-0 position-relative overflow-hidden">
-                    <img src="images/demo-branding-agency-team-02.jpg" alt="" />
-                    <img src="images/demo-branding-agency-team-02-hover.jpg" class="hover-switch-image" alt="" />
+                    <img src="assets/images/demo-branding-agency-team-02.jpg" alt="" />
+                    <img src="assets/images/demo-branding-agency-team-02-hover.jpg" class="hover-switch-image" alt="" />
                     <figcaption class="w-100 h-100 d-flex flex-wrap">
                         <div class="social-icon d-flex flex-column flex-shrink-1 mb-auto p-30px ms-auto">
                             <a href="https://www.facebook.com/" target="_blank" class="text-white bg-dark-gray"><i class="fa-brands fa-facebook-f icon-small"></i></a>
@@ -273,8 +276,8 @@
             <!-- start team member item -->
             <div class="col team-style-10">
                 <figure class="mb-0 position-relative overflow-hidden">
-                    <img src="images/demo-branding-agency-team-04.jpg" alt="" />
-                    <img src="images/demo-branding-agency-team-04-hover.jpg" class="hover-switch-image" alt="" />
+                    <img src="assets/images/demo-branding-agency-team-04.jpg" alt="" />
+                    <img src="assets/images/demo-branding-agency-team-04-hover.jpg" class="hover-switch-image" alt="" />
                     <figcaption class="w-100 h-100 d-flex flex-wrap">
                         <div class="social-icon d-flex flex-column flex-shrink-1 mb-auto p-30px ms-auto">
                             <a href="https://www.instagram.com/" target="_blank" class="text-white bg-dark-gray"><i class="fa-brands fa-instagram icon-small"></i></a>
@@ -306,4 +309,4 @@
 
 
 
-<?php include 'includes/footer.php'; ?>
+<?php include __DIR__ . '/../../includes/footer.php'; ?>

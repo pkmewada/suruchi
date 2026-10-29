@@ -1,4 +1,7 @@
-<?php include 'includes/header.php'; ?>
+<?php
+$contactPage = page_all('contact');
+include __DIR__ . '/../../includes/header.php';
+?>
  
 
 
@@ -8,16 +11,16 @@
                 <div class="row g-0">
                     <div class="col-xl-4 col-lg-5 d-flex justify-content-center align-items-center ps-10 xxl-ps-6 xl-ps-4 md-ps-4 sm-ps-0 position-relative order-2 order-lg-1" data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 600, "delay":0, "staggervalue": 300, "easing": "easeOutQuad" }'>
                         <div class="vertical-title-center align-items-center justify-content-center flex-shrink-0 w-75px sm-w-50px">
-                            <h1 class="title fs-15 alt-font text-dark-gray fw-700 text-uppercase ls-1px text-uppercase d-flex w-auto align-items-center m-0" data-fancy-text='{ "opacity": [0, 1], "translateY": [50, 0], "filter": ["blur(20px)", "blur(0px)"], "string": ["contact us"], "duration": 400, "delay": 0, "speed": 50, "easing": "easeOutQuad" }'></h1>
+                            <h1 class="title fs-15 alt-font text-dark-gray fw-700 text-uppercase ls-1px text-uppercase d-flex w-auto align-items-center m-0" data-fancy-text='{ "opacity": [0, 1], "translateY": [50, 0], "filter": ["blur(20px)", "blur(0px)"], "string": [<?= json_encode($contactPage['hero']['eyebrow'], JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_TAG | JSON_HEX_AMP) ?>], "duration": 400, "delay": 0, "speed": 50, "easing": "easeOutQuad" }'></h1>
                         </div>
                         <div class="border-start border-color-extra-medium-gray ps-40px sm-ps-20px position-relative z-index-9">
-                            <h2 class="text-dark-gray fw-600 alt-font outside-box-right-10 xl-outside-box-right-15 lg-outside-box-right-20 md-me-0 sm-mb-0 ls-minus-3px">We're here to here answer & question you may have.</h2>
+                            <h2 class="text-dark-gray fw-600 alt-font outside-box-right-10 xl-outside-box-right-15 lg-outside-box-right-20 md-me-0 sm-mb-0 ls-minus-3px"><?= e($contactPage['hero']['heading']) ?></h2>
                         </div>
                     </div>
                     <div class="col-xl-8 col-lg-7 position-relative one-half-screen order-1 order-lg-2 md-mb-50px"> 
                         <div class="overflow-hidden position-relative">
                             <div class="w-100" data-anime='{ "effect": "slide", "direction": "lr", "color": "#f7f7f7", "duration": 1000, "delay": 0 }'>
-                                <img src="images/demo-branding-agency-contact-title-bg.jpg" alt="" class="w-100 liquid-parallax" data-parallax-liquid="true" data-parallax-position="top" data-parallax-scale="1.05">
+                                <img src="<?= e($contactPage['hero']['image']) ?>" alt="" class="w-100 liquid-parallax" data-parallax-liquid="true" data-parallax-position="top" data-parallax-scale="1.05">
                             </div>
                         </div>
                     </div>
@@ -30,48 +33,48 @@
             <div class="container">
                 <div class="row" data-anime='{ "el": "childs", "translateX": [30, 0], "opacity": [0,1], "duration": 600, "delay":0, "staggervalue": 300, "easing": "easeOutQuad" }'>
                     <div class="col-md-4 sm-mb-30px"> 
-                        <span class="fs-30 alt-font ls-minus-05px fw-700 text-dark-gray">London</span>
-                        <p class="w-70 mb-10px lg-w-90">301 Sondanella, Eden walk, Orchard view, London, UK</p>
+                        <span class="fs-30 alt-font ls-minus-05px fw-700 text-dark-gray"><?= e($contactPage['offices']['items'][0]['city']) ?></span>
+                        <p class="w-70 mb-10px lg-w-90"><?= e($contactPage['offices']['items'][0]['address']) ?></p>
                         <div class="separator-line-1px bg-extra-medium-gray w-70 mt-20px mb-20px md-w-100"></div>
                         <div class="d-block">
                             <span class="text-dark-gray fw-600">E:</span> 
-                            <a href="mailto:info@yourdomain.com">info@yourdomain.com</a>
+                            <a href="mailto:<?= e($contactPage['offices']['items'][0]['email']) ?>"><?= e($contactPage['offices']['items'][0]['email']) ?></a>
                         </div>
                         <div class="d-block mb-5px">
                             <span class="text-dark-gray fw-600">T:</span> 
-                            <a href="tel:12345678910">123 456 7890</a>
+                            <a href="tel:<?= e(preg_replace('/\D+/', '', $contactPage['offices']['items'][0]['phone'])) ?>"><?= e($contactPage['offices']['items'][0]['phone']) ?></a>
                         </div>
                         <a href="https://maps.google.com/maps?ll=-37.805688,144.962312&amp;z=17&amp;t=m&amp;hl=en-US&amp;gl=IN&amp;mapclient=embed&amp;cid=13153204942596594449" target="_blank" class="fs-14 text-dark-gray text-uppercase fw-600">
                             <span class=""><i class="feather icon-feather-map-pin fs-14 me-5px"></i>View on google map</span> 
                         </a>
                     </div>
                     <div class="col-md-4 sm-mb-30px">
-                        <span class="fs-30 alt-font ls-minus-05px fw-700 text-dark-gray">New York</span>
-                        <p class="w-70 mb-10px lg-w-90 md-w-100">27 Eden walk eden centre, Orchard view, New York, USA</p>
+                        <span class="fs-30 alt-font ls-minus-05px fw-700 text-dark-gray"><?= e($contactPage['offices']['items'][1]['city']) ?></span>
+                        <p class="w-70 mb-10px lg-w-90 md-w-100"><?= e($contactPage['offices']['items'][1]['address']) ?></p>
                         <div class="separator-line-1px bg-extra-medium-gray w-70 mt-20px mb-20px md-w-100"></div>
                         <div class="d-block">
                             <span class="text-dark-gray fw-600">E:</span> 
-                            <a href="mailto:info@yourdomain.com">info@yourdomain.com</a>
+                            <a href="mailto:<?= e($contactPage['offices']['items'][1]['email']) ?>"><?= e($contactPage['offices']['items'][1]['email']) ?></a>
                         </div>
                         <div class="d-block mb-5px">
                             <span class="text-dark-gray fw-600">T:</span> 
-                            <a href="tel:12345678910">123 456 7890</a>
+                            <a href="tel:<?= e(preg_replace('/\D+/', '', $contactPage['offices']['items'][1]['phone'])) ?>"><?= e($contactPage['offices']['items'][1]['phone']) ?></a>
                         </div>
                         <a href="https://maps.google.com/maps?ll=-37.805688,144.962312&amp;z=17&amp;t=m&amp;hl=en-US&amp;gl=IN&amp;mapclient=embed&amp;cid=13153204942596594449" target="_blank" class="fs-14 text-dark-gray text-uppercase fw-600">
                             <span class=""><i class="feather icon-feather-map-pin fs-14 me-5px"></i>View on google map</span> 
                         </a>
                     </div>
                     <div class="col-md-4"> 
-                        <span class="fs-30 alt-font ls-minus-05px fw-700 text-dark-gray">Dubai</span>
-                        <p class="w-70 mb-10px lg-w-80 md-w-100">701 Sondanella, 24th Floor, Valley road, Dubai, Emirates</p>
+                        <span class="fs-30 alt-font ls-minus-05px fw-700 text-dark-gray"><?= e($contactPage['offices']['items'][2]['city']) ?></span>
+                        <p class="w-70 mb-10px lg-w-80 md-w-100"><?= e($contactPage['offices']['items'][2]['address']) ?></p>
                         <div class="separator-line-1px bg-extra-medium-gray w-70 mt-20px mb-20px md-w-100"></div>
                         <div class="d-block">
                             <span class="text-dark-gray fw-600">E:</span> 
-                            <a href="mailto:info@yourdomain.com">info@yourdomain.com</a>
+                            <a href="mailto:<?= e($contactPage['offices']['items'][2]['email']) ?>"><?= e($contactPage['offices']['items'][2]['email']) ?></a>
                         </div>
                         <div class="d-block mb-5px">
                             <span class="text-dark-gray fw-600">T:</span> 
-                            <a href="tel:12345678910">123 456 7890</a>
+                            <a href="tel:<?= e(preg_replace('/\D+/', '', $contactPage['offices']['items'][2]['phone'])) ?>"><?= e($contactPage['offices']['items'][2]['phone']) ?></a>
                         </div>
                         <a href="https://maps.google.com/maps?ll=-37.805688,144.962312&amp;z=17&amp;t=m&amp;hl=en-US&amp;gl=IN&amp;mapclient=embed&amp;cid=13153204942596594449" target="_blank" class="fs-14 text-dark-gray text-uppercase fw-600">
                             <span class=""><i class="feather icon-feather-map-pin fs-14 me-5px"></i>View on google map</span> 
@@ -85,10 +88,10 @@
         <section class="p-0">
             <div class="container-fluid p-0">
                 <div class="row g-0">
-                    <div class="col-xl-6 col-lg-7 cover-background md-h-500px sm-h-400px md-mb-50px" style="background-image:url('images/demo-branding-agency-contact-01.jpg')">
+                    <div class="col-xl-6 col-lg-7 cover-background md-h-500px sm-h-400px md-mb-50px" style="background-image:url('<?= e($contactPage['contact_card']['image']) ?>')">
                         <div class="position-absolute text-center blur-box right-30px bottom-30px sm-right-15px sm-bottom-15px pt-35px pb-35px ps-45px pe-45px sm-p-20px bg-white-transparent counter-style-04 d-flex align-items-center border-radius-6px">
-                            <h2 class="vertical-counter d-inline-flex alt-font text-dark-gray fw-700 mb-0 ls-minus-2px" data-text="+" data-to="353"></h2>
-                            <span class="w-180px text-dark-gray text-start fw-500 lh-24 ms-15px sm-ms-10px">Very satisfied clients around the worldwide.</span>
+                            <h2 class="vertical-counter d-inline-flex alt-font text-dark-gray fw-700 mb-0 ls-minus-2px" data-text="+" data-to="<?= e($contactPage['contact_card']['number']) ?>"></h2>
+                            <span class="w-180px text-dark-gray text-start fw-500 lh-24 ms-15px sm-ms-10px"><?= e($contactPage['contact_card']['text']) ?></span>
                         </div>
                     </div>
                     <div class="col-xxl-4 col-xl-5 col-lg-5 position-relative"> 
@@ -97,7 +100,7 @@
                                 <span class="w-25px h-1px d-inline-block bg-base-color me-5px align-middle"></span>
                                 <span class="text-gradient-base-color fs-15 alt-font fw-700 ls-05px text-uppercase d-inline-block align-middle">Get in touch with us</span>
                             </div>
-                            <h2 class="text-dark-gray alt-font fw-600 w-90 xxl-w-100 ls-minus-2px">We'd love to hear from you!</h2>
+                            <h2 class="text-dark-gray alt-font fw-600 w-90 xxl-w-100 ls-minus-2px"><?= e($contactPage['contact_card']['heading']) ?></h2>
                             <form action="email-templates/contact-form.php" method="post">
                                 <div class="position-relative form-group mb-20px">
                                     <span class="form-icon"><i class="bi bi-person icon-extra-medium text-dark-gray"></i></span>
@@ -152,4 +155,4 @@
         </section>
         <!-- end section --> 
        
-        <?php include 'includes/footer.php'; ?>
+        <?php include __DIR__ . '/../../includes/footer.php'; ?>

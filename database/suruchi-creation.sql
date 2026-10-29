@@ -20,6 +20,24 @@ CREATE TABLE IF NOT EXISTS `home_sections` (
   PRIMARY KEY (`section_key`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+CREATE TABLE IF NOT EXISTS `page_sections` (
+  `page_key`    VARCHAR(50) NOT NULL,
+  `section_key` VARCHAR(50) NOT NULL,
+  `content`     LONGTEXT NOT NULL,
+  `updated_at`  TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`page_key`, `section_key`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+INSERT INTO `page_sections` (`page_key`, `section_key`, `content`)
+SELECT 'home', `section_key`, REPLACE(`content`, '"images/', '"assets/images/') FROM `home_sections`
+ON DUPLICATE KEY UPDATE `content` = VALUES(`content`);
+
+UPDATE `page_sections`
+SET `content` = REPLACE(`content`, '"images/', '"assets/images/')
+WHERE `content` LIKE '%"images/%';
+
+DROP TABLE IF EXISTS `home_sections`;
+
 INSERT INTO `users` (`name`, `email`, `password_hash`) VALUES
 ('Admin', 'admin@suruchi.com', '$2y$10$jM2omINImuTuRkeY6xrPAOKzRz1zn5JUL7kCETIWEEu3./yEDoJ6a')
 ON DUPLICATE KEY UPDATE `email` = `email`;
