@@ -36,396 +36,49 @@ include __DIR__ . '/../../includes/header.php';
         <section class="position-relative pt-0">
             <div class="container">
                 <div class="row">
-                    <div class="col-xl-4 col-md-5 filter-content">
+<?php
+// Same 4-item layout pattern, repeated for every extra group of projects.
+$projectSlots = [
+    ['col' => 'col-xl-4 col-md-5 filter-content', 'from' => '50px', 'to' => '-50px', 'after' => ''],
+    ['col' => 'col-xl-7 col-md-7 filter-content offset-xl-1', 'from' => '100px', 'to' => '180px', 'after' => 'col-12 filter-content mt-20 lg-mt-0 mb-3 lg-mb-0'],
+    ['col' => 'col-xl-7 col-md-7 filter-content mt-5 lg-mt-0', 'from' => '50px', 'to' => '-50px', 'after' => ''],
+    ['col' => 'col-xl-4 col-md-5 filter-content offset-xl-1 mt-3 lg-mt-0', 'from' => '-50px', 'to' => '50px', 'after' => 'col-12 mt-5 lg-mt-0 filter-content'],
+];
+$projectItems = array_values($productPage['projects']['items'] ?? []);
+foreach ($projectItems as $index => $project):
+    $slot = $projectSlots[$index % 4];
+?>
+                    <div class="<?= $slot['col'] ?>">
                         <ul class="portfolio-simple portfolio-wrapper grid-loading grid grid-4col xxl-grid-4col xl-grid-4col lg-grid-4col md-grid-2col sm-grid-2col xs-grid-1col gutter-extra-large text-center">
                             <li class="grid-sizer"></li>
                             <!-- start portfolio item -->
                             <li class="grid-item grid-item-single transition-inner-all">
-                                <div class="portfolio-box" data-bottom-top="transform: translate3d(0px, 50px, 0px);" data-top-bottom="transform: translate3d(0px, -50px, 0px);">
+                                <div class="portfolio-box" data-bottom-top="transform: translate3d(0px, <?= $slot['from'] ?>, 0px);" data-top-bottom="transform: translate3d(0px, <?= $slot['to'] ?>, 0px);">
                                     <div class="portfolio-image bg-extra-medium-gray">
                                         <a href="demo-branding-agency-single-project-slider.html">
-                                            <img src="<?= e($productPage['projects']['items'][0]['image']) ?>" alt="" />
+                                            <img src="<?= e($project['image'] ?? '') ?>" alt="" />
                                         </a>
                                     </div>
                                     <div class="portfolio-caption pt-35px pb-35px sm-pt-20px sm-pb-0">
-                                        <a href="demo-branding-agency-single-project-slider.html" class="text-dark-gray ls-minus-05px ls-minus-05px fw-600 fs-22 alt-font"><?= e($productPage['projects']['items'][0]['title']) ?></a>
+                                        <a href="demo-branding-agency-single-project-slider.html" class="text-dark-gray ls-minus-05px fw-600 fs-22 alt-font"><?= e($project['title'] ?? '') ?></a>
                                         <span class="d-inline-block align-middle w-10px separator-line-1px bg-light-gray ms-5px me-5px"></span>
-                                        <div class="d-inline-block"><?= e($productPage['projects']['items'][0]['category']) ?></div>
+                                        <div class="d-inline-block"><?= e($project['category'] ?? '') ?></div>
                                     </div>
                                 </div>
                             </li>
                             <!-- end portfolio item -->
                         </ul>
                     </div>
-                    <div class="col-xl-7 col-md-7 filter-content offset-xl-1">
-                        <ul class="portfolio-simple portfolio-wrapper grid-loading grid grid-4col xxl-grid-4col xl-grid-4col lg-grid-4col md-grid-2col sm-grid-2col xs-grid-1col gutter-extra-large text-center">
-                            <li class="grid-sizer"></li>
-                            <!-- start portfolio item -->
-                            <li class="grid-item grid-item-single transition-inner-all">
-                                <div class="portfolio-box" data-bottom-top="transform: translate3d(0px, 100px, 0px)" data-top-bottom="transform: translate3d(0px, 180px, 0px);">
-                                    <div class="portfolio-image bg-extra-medium-gray">
-                                        <a href="demo-branding-agency-single-project-slider.html">
-                                            <img src="<?= e($productPage['projects']['items'][1]['image']) ?>" alt="" />
-                                        </a>
-                                    </div>
-                                    <div class="portfolio-caption pt-35px pb-35px sm-pt-20px sm-pb-0">
-                                        <a href="demo-branding-agency-single-project-slider.html" class="text-dark-gray ls-minus-05px fw-600 fs-22 alt-font"><?= e($productPage['projects']['items'][1]['title']) ?></a>
-                                        <span class="d-inline-block align-middle w-10px separator-line-1px bg-light-gray ms-5px me-5px"></span>
-                                        <div class="d-inline-block"><?= e($productPage['projects']['items'][1]['category']) ?></div>
-                                    </div>
-                                </div>
-                            </li>
-                            <!-- end portfolio item -->
-                        </ul>
-                    </div>
-                    <div class="col-12 filter-content mt-20 lg-mt-0 mb-3 lg-mb-0">
+<?php if ($slot['after'] !== ''): ?>
+                    <div class="<?= $slot['after'] ?>">
 
                     </div>
-                    <div class="col-xl-7 col-md-7 filter-content mt-5 lg-mt-0">
-                        <ul class="portfolio-simple portfolio-wrapper grid-loading grid grid-4col xxl-grid-4col xl-grid-4col lg-grid-4col md-grid-2col sm-grid-2col xs-grid-1col gutter-extra-large text-center">
-                            <li class="grid-sizer"></li>
-                            <!-- start portfolio item -->
-                            <li class="grid-item grid-item-single transition-inner-all">
-                                <div class="portfolio-box" data-bottom-top="transform: translate3d(0px, 50px, 0px);" data-top-bottom="transform: translate3d(0px, -50px, 0px);">
-                                    <div class="portfolio-image bg-extra-medium-gray">
-                                        <a href="demo-branding-agency-single-project-slider.html">
-                                            <img src="<?= e($productPage['projects']['items'][2]['image']) ?>" alt="" />
-                                        </a>
-                                    </div>
-                                    <div class="portfolio-caption pt-35px pb-35px sm-pt-20px sm-pb-0">
-                                        <a href="demo-branding-agency-single-project-slider.html" class="text-dark-gray ls-minus-05px fw-600 fs-22 alt-font"><?= e($productPage['projects']['items'][2]['title']) ?></a>
-                                        <span class="d-inline-block align-middle w-10px separator-line-1px bg-light-gray ms-5px me-5px"></span>
-                                        <div class="d-inline-block"><?= e($productPage['projects']['items'][2]['category']) ?></div>
-                                    </div>
-                                </div>
-                            </li>
-                            <!-- end portfolio item -->
-                        </ul>
-                    </div>
-                    <div class="col-xl-4 col-md-5 filter-content offset-xl-1 mt-3 lg-mt-0">
-                        <ul class="portfolio-simple portfolio-wrapper grid-loading grid grid-4col xxl-grid-4col xl-grid-4col lg-grid-4col md-grid-2col sm-grid-2col xs-grid-1col gutter-extra-large text-center">
-                            <li class="grid-sizer"></li>
-                            <!-- start portfolio item -->
-                            <li class="grid-item grid-item-single transition-inner-all">
-                                <div class="portfolio-box" data-bottom-top="transform: translate3d(0px, -50px, 0px);" data-top-bottom="transform: translate3d(0px, 50px, 0px);">
-                                    <div class="portfolio-image bg-extra-medium-gray">
-                                        <a href="demo-branding-agency-single-project-slider.html">
-                                            <img src="<?= e($productPage['projects']['items'][3]['image']) ?>" alt="" />
-                                        </a>
-                                    </div>
-                                    <div class="portfolio-caption pt-35px pb-35px sm-pt-20px sm-pb-0">
-                                        <a href="demo-branding-agency-single-project-slider.html" class="text-dark-gray ls-minus-05px fw-600 fs-22 alt-font"><?= e($productPage['projects']['items'][3]['title']) ?></a>
-                                        <span class="d-inline-block align-middle w-10px separator-line-1px bg-light-gray ms-5px me-5px"></span>
-                                        <div class="d-inline-block"><?= e($productPage['projects']['items'][3]['category']) ?></div>
-                                    </div>
-                                </div>
-                            </li>
-                            <!-- end portfolio item -->
-                        </ul>
-                    </div>
-                    <div class="col-12 mt-5 lg-mt-0 filter-content">
-
-                    </div>
+<?php endif; ?>
+<?php endforeach; ?>
                 </div>
             </div>
         </section>
         <!-- end section -->
-
-         <section class="position-relative pt-0">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-4 col-md-5 filter-content">
-                        <ul class="portfolio-simple portfolio-wrapper grid-loading grid grid-4col xxl-grid-4col xl-grid-4col lg-grid-4col md-grid-2col sm-grid-2col xs-grid-1col gutter-extra-large text-center">
-                            <li class="grid-sizer"></li>
-                            <!-- start portfolio item -->
-                            <li class="grid-item grid-item-single transition-inner-all">
-                                <div class="portfolio-box" data-bottom-top="transform: translate3d(0px, 50px, 0px);" data-top-bottom="transform: translate3d(0px, -50px, 0px);">
-                                    <div class="portfolio-image bg-extra-medium-gray">
-                                        <a href="demo-branding-agency-single-project-slider.html">
-                                            <img src="<?= e($productPage['projects']['items'][0]['image']) ?>" alt="" />
-                                        </a>
-                                    </div>
-                                    <div class="portfolio-caption pt-35px pb-35px sm-pt-20px sm-pb-0">
-                                        <a href="demo-branding-agency-single-project-slider.html" class="text-dark-gray ls-minus-05px ls-minus-05px fw-600 fs-22 alt-font"><?= e($productPage['projects']['items'][0]['title']) ?></a>
-                                        <span class="d-inline-block align-middle w-10px separator-line-1px bg-light-gray ms-5px me-5px"></span>
-                                        <div class="d-inline-block"><?= e($productPage['projects']['items'][0]['category']) ?></div>
-                                    </div>
-                                </div>
-                            </li>
-                            <!-- end portfolio item -->
-                        </ul>
-                    </div>
-                    <div class="col-xl-7 col-md-7 filter-content offset-xl-1">
-                        <ul class="portfolio-simple portfolio-wrapper grid-loading grid grid-4col xxl-grid-4col xl-grid-4col lg-grid-4col md-grid-2col sm-grid-2col xs-grid-1col gutter-extra-large text-center">
-                            <li class="grid-sizer"></li>
-                            <!-- start portfolio item -->
-                            <li class="grid-item grid-item-single transition-inner-all">
-                                <div class="portfolio-box" data-bottom-top="transform: translate3d(0px, 100px, 0px)" data-top-bottom="transform: translate3d(0px, 180px, 0px);">
-                                    <div class="portfolio-image bg-extra-medium-gray">
-                                        <a href="demo-branding-agency-single-project-slider.html">
-                                            <img src="<?= e($productPage['projects']['items'][1]['image']) ?>" alt="" />
-                                        </a>
-                                    </div>
-                                    <div class="portfolio-caption pt-35px pb-35px sm-pt-20px sm-pb-0">
-                                        <a href="demo-branding-agency-single-project-slider.html" class="text-dark-gray ls-minus-05px fw-600 fs-22 alt-font"><?= e($productPage['projects']['items'][1]['title']) ?></a>
-                                        <span class="d-inline-block align-middle w-10px separator-line-1px bg-light-gray ms-5px me-5px"></span>
-                                        <div class="d-inline-block"><?= e($productPage['projects']['items'][1]['category']) ?></div>
-                                    </div>
-                                </div>
-                            </li>
-                            <!-- end portfolio item -->
-                        </ul>
-                    </div>
-                    <div class="col-12 filter-content mt-20 lg-mt-0 mb-3 lg-mb-0">
-
-                    </div>
-                    <div class="col-xl-7 col-md-7 filter-content mt-5 lg-mt-0">
-                        <ul class="portfolio-simple portfolio-wrapper grid-loading grid grid-4col xxl-grid-4col xl-grid-4col lg-grid-4col md-grid-2col sm-grid-2col xs-grid-1col gutter-extra-large text-center">
-                            <li class="grid-sizer"></li>
-                            <!-- start portfolio item -->
-                            <li class="grid-item grid-item-single transition-inner-all">
-                                <div class="portfolio-box" data-bottom-top="transform: translate3d(0px, 50px, 0px);" data-top-bottom="transform: translate3d(0px, -50px, 0px);">
-                                    <div class="portfolio-image bg-extra-medium-gray">
-                                        <a href="demo-branding-agency-single-project-slider.html">
-                                            <img src="<?= e($productPage['projects']['items'][2]['image']) ?>" alt="" />
-                                        </a>
-                                    </div>
-                                    <div class="portfolio-caption pt-35px pb-35px sm-pt-20px sm-pb-0">
-                                        <a href="demo-branding-agency-single-project-slider.html" class="text-dark-gray ls-minus-05px fw-600 fs-22 alt-font"><?= e($productPage['projects']['items'][2]['title']) ?></a>
-                                        <span class="d-inline-block align-middle w-10px separator-line-1px bg-light-gray ms-5px me-5px"></span>
-                                        <div class="d-inline-block"><?= e($productPage['projects']['items'][2]['category']) ?></div>
-                                    </div>
-                                </div>
-                            </li>
-                            <!-- end portfolio item -->
-                        </ul>
-                    </div>
-                    <div class="col-xl-4 col-md-5 filter-content offset-xl-1 mt-3 lg-mt-0">
-                        <ul class="portfolio-simple portfolio-wrapper grid-loading grid grid-4col xxl-grid-4col xl-grid-4col lg-grid-4col md-grid-2col sm-grid-2col xs-grid-1col gutter-extra-large text-center">
-                            <li class="grid-sizer"></li>
-                            <!-- start portfolio item -->
-                            <li class="grid-item grid-item-single transition-inner-all">
-                                <div class="portfolio-box" data-bottom-top="transform: translate3d(0px, -50px, 0px);" data-top-bottom="transform: translate3d(0px, 50px, 0px);">
-                                    <div class="portfolio-image bg-extra-medium-gray">
-                                        <a href="demo-branding-agency-single-project-slider.html">
-                                            <img src="<?= e($productPage['projects']['items'][3]['image']) ?>" alt="" />
-                                        </a>
-                                    </div>
-                                    <div class="portfolio-caption pt-35px pb-35px sm-pt-20px sm-pb-0">
-                                        <a href="demo-branding-agency-single-project-slider.html" class="text-dark-gray ls-minus-05px fw-600 fs-22 alt-font"><?= e($productPage['projects']['items'][3]['title']) ?></a>
-                                        <span class="d-inline-block align-middle w-10px separator-line-1px bg-light-gray ms-5px me-5px"></span>
-                                        <div class="d-inline-block"><?= e($productPage['projects']['items'][3]['category']) ?></div>
-                                    </div>
-                                </div>
-                            </li>
-                            <!-- end portfolio item -->
-                        </ul>
-                    </div>
-                    <div class="col-12 mt-5 lg-mt-0 filter-content">
-
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- end section -->
-
-         <section class="position-relative pt-0">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-4 col-md-5 filter-content">
-                        <ul class="portfolio-simple portfolio-wrapper grid-loading grid grid-4col xxl-grid-4col xl-grid-4col lg-grid-4col md-grid-2col sm-grid-2col xs-grid-1col gutter-extra-large text-center">
-                            <li class="grid-sizer"></li>
-                            <!-- start portfolio item -->
-                            <li class="grid-item grid-item-single transition-inner-all">
-                                <div class="portfolio-box" data-bottom-top="transform: translate3d(0px, 50px, 0px);" data-top-bottom="transform: translate3d(0px, -50px, 0px);">
-                                    <div class="portfolio-image bg-extra-medium-gray">
-                                        <a href="demo-branding-agency-single-project-slider.html">
-                                            <img src="<?= e($productPage['projects']['items'][0]['image']) ?>" alt="" />
-                                        </a>
-                                    </div>
-                                    <div class="portfolio-caption pt-35px pb-35px sm-pt-20px sm-pb-0">
-                                        <a href="demo-branding-agency-single-project-slider.html" class="text-dark-gray ls-minus-05px ls-minus-05px fw-600 fs-22 alt-font"><?= e($productPage['projects']['items'][0]['title']) ?></a>
-                                        <span class="d-inline-block align-middle w-10px separator-line-1px bg-light-gray ms-5px me-5px"></span>
-                                        <div class="d-inline-block"><?= e($productPage['projects']['items'][0]['category']) ?></div>
-                                    </div>
-                                </div>
-                            </li>
-                            <!-- end portfolio item -->
-                        </ul>
-                    </div>
-                    <div class="col-xl-7 col-md-7 filter-content offset-xl-1">
-                        <ul class="portfolio-simple portfolio-wrapper grid-loading grid grid-4col xxl-grid-4col xl-grid-4col lg-grid-4col md-grid-2col sm-grid-2col xs-grid-1col gutter-extra-large text-center">
-                            <li class="grid-sizer"></li>
-                            <!-- start portfolio item -->
-                            <li class="grid-item grid-item-single transition-inner-all">
-                                <div class="portfolio-box" data-bottom-top="transform: translate3d(0px, 100px, 0px)" data-top-bottom="transform: translate3d(0px, 180px, 0px);">
-                                    <div class="portfolio-image bg-extra-medium-gray">
-                                        <a href="demo-branding-agency-single-project-slider.html">
-                                            <img src="<?= e($productPage['projects']['items'][1]['image']) ?>" alt="" />
-                                        </a>
-                                    </div>
-                                    <div class="portfolio-caption pt-35px pb-35px sm-pt-20px sm-pb-0">
-                                        <a href="demo-branding-agency-single-project-slider.html" class="text-dark-gray ls-minus-05px fw-600 fs-22 alt-font"><?= e($productPage['projects']['items'][1]['title']) ?></a>
-                                        <span class="d-inline-block align-middle w-10px separator-line-1px bg-light-gray ms-5px me-5px"></span>
-                                        <div class="d-inline-block"><?= e($productPage['projects']['items'][1]['category']) ?></div>
-                                    </div>
-                                </div>
-                            </li>
-                            <!-- end portfolio item -->
-                        </ul>
-                    </div>
-                    <div class="col-12 filter-content mt-20 lg-mt-0 mb-3 lg-mb-0">
-
-                    </div>
-                    <div class="col-xl-7 col-md-7 filter-content mt-5 lg-mt-0">
-                        <ul class="portfolio-simple portfolio-wrapper grid-loading grid grid-4col xxl-grid-4col xl-grid-4col lg-grid-4col md-grid-2col sm-grid-2col xs-grid-1col gutter-extra-large text-center">
-                            <li class="grid-sizer"></li>
-                            <!-- start portfolio item -->
-                            <li class="grid-item grid-item-single transition-inner-all">
-                                <div class="portfolio-box" data-bottom-top="transform: translate3d(0px, 50px, 0px);" data-top-bottom="transform: translate3d(0px, -50px, 0px);">
-                                    <div class="portfolio-image bg-extra-medium-gray">
-                                        <a href="demo-branding-agency-single-project-slider.html">
-                                            <img src="<?= e($productPage['projects']['items'][2]['image']) ?>" alt="" />
-                                        </a>
-                                    </div>
-                                    <div class="portfolio-caption pt-35px pb-35px sm-pt-20px sm-pb-0">
-                                        <a href="demo-branding-agency-single-project-slider.html" class="text-dark-gray ls-minus-05px fw-600 fs-22 alt-font"><?= e($productPage['projects']['items'][2]['title']) ?></a>
-                                        <span class="d-inline-block align-middle w-10px separator-line-1px bg-light-gray ms-5px me-5px"></span>
-                                        <div class="d-inline-block"><?= e($productPage['projects']['items'][2]['category']) ?></div>
-                                    </div>
-                                </div>
-                            </li>
-                            <!-- end portfolio item -->
-                        </ul>
-                    </div>
-                    <div class="col-xl-4 col-md-5 filter-content offset-xl-1 mt-3 lg-mt-0">
-                        <ul class="portfolio-simple portfolio-wrapper grid-loading grid grid-4col xxl-grid-4col xl-grid-4col lg-grid-4col md-grid-2col sm-grid-2col xs-grid-1col gutter-extra-large text-center">
-                            <li class="grid-sizer"></li>
-                            <!-- start portfolio item -->
-                            <li class="grid-item grid-item-single transition-inner-all">
-                                <div class="portfolio-box" data-bottom-top="transform: translate3d(0px, -50px, 0px);" data-top-bottom="transform: translate3d(0px, 50px, 0px);">
-                                    <div class="portfolio-image bg-extra-medium-gray">
-                                        <a href="demo-branding-agency-single-project-slider.html">
-                                            <img src="<?= e($productPage['projects']['items'][3]['image']) ?>" alt="" />
-                                        </a>
-                                    </div>
-                                    <div class="portfolio-caption pt-35px pb-35px sm-pt-20px sm-pb-0">
-                                        <a href="demo-branding-agency-single-project-slider.html" class="text-dark-gray ls-minus-05px fw-600 fs-22 alt-font"><?= e($productPage['projects']['items'][3]['title']) ?></a>
-                                        <span class="d-inline-block align-middle w-10px separator-line-1px bg-light-gray ms-5px me-5px"></span>
-                                        <div class="d-inline-block"><?= e($productPage['projects']['items'][3]['category']) ?></div>
-                                    </div>
-                                </div>
-                            </li>
-                            <!-- end portfolio item -->
-                        </ul>
-                    </div>
-                    <div class="col-12 mt-5 lg-mt-0 filter-content">
-
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- end section -->
-
-         <section class="position-relative pt-0">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-4 col-md-5 filter-content">
-                        <ul class="portfolio-simple portfolio-wrapper grid-loading grid grid-4col xxl-grid-4col xl-grid-4col lg-grid-4col md-grid-2col sm-grid-2col xs-grid-1col gutter-extra-large text-center">
-                            <li class="grid-sizer"></li>
-                            <!-- start portfolio item -->
-                            <li class="grid-item grid-item-single transition-inner-all">
-                                <div class="portfolio-box" data-bottom-top="transform: translate3d(0px, 50px, 0px);" data-top-bottom="transform: translate3d(0px, -50px, 0px);">
-                                    <div class="portfolio-image bg-extra-medium-gray">
-                                        <a href="demo-branding-agency-single-project-slider.html">
-                                            <img src="<?= e($productPage['projects']['items'][0]['image']) ?>" alt="" />
-                                        </a>
-                                    </div>
-                                    <div class="portfolio-caption pt-35px pb-35px sm-pt-20px sm-pb-0">
-                                        <a href="demo-branding-agency-single-project-slider.html" class="text-dark-gray ls-minus-05px ls-minus-05px fw-600 fs-22 alt-font"><?= e($productPage['projects']['items'][0]['title']) ?></a>
-                                        <span class="d-inline-block align-middle w-10px separator-line-1px bg-light-gray ms-5px me-5px"></span>
-                                        <div class="d-inline-block"><?= e($productPage['projects']['items'][0]['category']) ?></div>
-                                    </div>
-                                </div>
-                            </li>
-                            <!-- end portfolio item -->
-                        </ul>
-                    </div>
-                    <div class="col-xl-7 col-md-7 filter-content offset-xl-1">
-                        <ul class="portfolio-simple portfolio-wrapper grid-loading grid grid-4col xxl-grid-4col xl-grid-4col lg-grid-4col md-grid-2col sm-grid-2col xs-grid-1col gutter-extra-large text-center">
-                            <li class="grid-sizer"></li>
-                            <!-- start portfolio item -->
-                            <li class="grid-item grid-item-single transition-inner-all">
-                                <div class="portfolio-box" data-bottom-top="transform: translate3d(0px, 100px, 0px)" data-top-bottom="transform: translate3d(0px, 180px, 0px);">
-                                    <div class="portfolio-image bg-extra-medium-gray">
-                                        <a href="demo-branding-agency-single-project-slider.html">
-                                            <img src="<?= e($productPage['projects']['items'][1]['image']) ?>" alt="" />
-                                        </a>
-                                    </div>
-                                    <div class="portfolio-caption pt-35px pb-35px sm-pt-20px sm-pb-0">
-                                        <a href="demo-branding-agency-single-project-slider.html" class="text-dark-gray ls-minus-05px fw-600 fs-22 alt-font"><?= e($productPage['projects']['items'][1]['title']) ?></a>
-                                        <span class="d-inline-block align-middle w-10px separator-line-1px bg-light-gray ms-5px me-5px"></span>
-                                        <div class="d-inline-block"><?= e($productPage['projects']['items'][1]['category']) ?></div>
-                                    </div>
-                                </div>
-                            </li>
-                            <!-- end portfolio item -->
-                        </ul>
-                    </div>
-                    <div class="col-12 filter-content mt-20 lg-mt-0 mb-3 lg-mb-0">
-
-                    </div>
-                    <div class="col-xl-7 col-md-7 filter-content mt-5 lg-mt-0">
-                        <ul class="portfolio-simple portfolio-wrapper grid-loading grid grid-4col xxl-grid-4col xl-grid-4col lg-grid-4col md-grid-2col sm-grid-2col xs-grid-1col gutter-extra-large text-center">
-                            <li class="grid-sizer"></li>
-                            <!-- start portfolio item -->
-                            <li class="grid-item grid-item-single transition-inner-all">
-                                <div class="portfolio-box" data-bottom-top="transform: translate3d(0px, 50px, 0px);" data-top-bottom="transform: translate3d(0px, -50px, 0px);">
-                                    <div class="portfolio-image bg-extra-medium-gray">
-                                        <a href="demo-branding-agency-single-project-slider.html">
-                                            <img src="<?= e($productPage['projects']['items'][2]['image']) ?>" alt="" />
-                                        </a>
-                                    </div>
-                                    <div class="portfolio-caption pt-35px pb-35px sm-pt-20px sm-pb-0">
-                                        <a href="demo-branding-agency-single-project-slider.html" class="text-dark-gray ls-minus-05px fw-600 fs-22 alt-font"><?= e($productPage['projects']['items'][2]['title']) ?></a>
-                                        <span class="d-inline-block align-middle w-10px separator-line-1px bg-light-gray ms-5px me-5px"></span>
-                                        <div class="d-inline-block"><?= e($productPage['projects']['items'][2]['category']) ?></div>
-                                    </div>
-                                </div>
-                            </li>
-                            <!-- end portfolio item -->
-                        </ul>
-                    </div>
-                    <div class="col-xl-4 col-md-5 filter-content offset-xl-1 mt-3 lg-mt-0">
-                        <ul class="portfolio-simple portfolio-wrapper grid-loading grid grid-4col xxl-grid-4col xl-grid-4col lg-grid-4col md-grid-2col sm-grid-2col xs-grid-1col gutter-extra-large text-center">
-                            <li class="grid-sizer"></li>
-                            <!-- start portfolio item -->
-                            <li class="grid-item grid-item-single transition-inner-all">
-                                <div class="portfolio-box" data-bottom-top="transform: translate3d(0px, -50px, 0px);" data-top-bottom="transform: translate3d(0px, 50px, 0px);">
-                                    <div class="portfolio-image bg-extra-medium-gray">
-                                        <a href="demo-branding-agency-single-project-slider.html">
-                                            <img src="<?= e($productPage['projects']['items'][3]['image']) ?>" alt="" />
-                                        </a>
-                                    </div>
-                                    <div class="portfolio-caption pt-35px pb-35px sm-pt-20px sm-pb-0">
-                                        <a href="demo-branding-agency-single-project-slider.html" class="text-dark-gray ls-minus-05px fw-600 fs-22 alt-font"><?= e($productPage['projects']['items'][3]['title']) ?></a>
-                                        <span class="d-inline-block align-middle w-10px separator-line-1px bg-light-gray ms-5px me-5px"></span>
-                                        <div class="d-inline-block"><?= e($productPage['projects']['items'][3]['category']) ?></div>
-                                    </div>
-                                </div>
-                            </li>
-                            <!-- end portfolio item -->
-                        </ul>
-                    </div>
-                    <div class="col-12 mt-5 lg-mt-0 filter-content">
-
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- end section -->
-
-
 
 
 <?php include __DIR__ . '/../../includes/footer.php'; ?>

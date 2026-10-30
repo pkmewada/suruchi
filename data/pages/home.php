@@ -353,8 +353,6 @@ function clients_row(array $clients): void { ?>
 
 <!-- start section -->
 <section class="big-section position-relative">
-    <div class="background-position-center-top background-no-repeat position-absolute h-100 w-100 left-0px top-0px"
-        style="background-image: url('<?= e($testi['bg_image'] ?? '') ?>')"></div>
     <div class="container position-relative">
         <div class="row justify-content-center mb-8"
             data-anime='{ "opacity": [0,1], "duration": 600, "delay":0, "staggervalue": 300, "easing": "easeOutQuad" }'>

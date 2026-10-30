@@ -30,7 +30,7 @@ function page_all(string $page): array
         if ($page === 'home') {
             $result[$section] = is_array($saved) ? array_merge($default, $saved) : $default;
         } else {
-            $result[$section] = is_array($saved) && page_data_matches($default, $saved) ? $saved : $default;
+            $result[$section] = is_array($saved) && page_data_matches($default, $saved, page_has_flexible_lists($page)) ? $saved : $default;
         }
     }
     return $result;
@@ -42,7 +42,7 @@ function page_save(string $page, string $section, array $data): void
     if (!isset($defaults[$page][$section])) {
         throw new InvalidArgumentException('Unknown page section');
     }
-    if ($page !== 'home' && !page_data_matches($defaults[$page][$section], $data)) {
+    if ($page !== 'home' && !page_data_matches($defaults[$page][$section], $data, page_has_flexible_lists($page))) {
         throw new InvalidArgumentException('Page content does not match the section structure');
     }
 
@@ -53,19 +53,43 @@ function page_save(string $page, string $section, array $data): void
     $stmt->execute(['page' => $page, 'section' => $section, 'content' => json_enc($data)]);
 }
 
-function page_data_matches($template, $value): bool
+/**
+ * Pages whose lists (e.g. product projects) can grow or shrink from the dashboard.
+ */
+function page_has_flexible_lists(string $page): bool
+{
+    return in_array($page, ['product'], true);
+}
+
+function page_is_list(array $value): bool
+{
+    return $value === [] || array_keys($value) === range(0, count($value) - 1);
+}
+
+function page_data_matches($template, $value, bool $flexibleLists = false): bool
 {
     if (!is_array($template)) {
         return is_string($value) || is_int($value) || is_float($value) || is_bool($value);
     }
-    if (!is_array($value) || count($template) !== count($value)) {
+    if (!is_array($value)) {
         return false;
     }
-    if (array_keys($template) !== array_keys($value)) {
+    if ($flexibleLists && $template !== [] && page_is_list($template)) {
+        if (!page_is_list($value)) {
+            return false;
+        }
+        foreach ($value as $item) {
+            if (!page_data_matches($template[0], $item, $flexibleLists)) {
+                return false;
+            }
+        }
+        return true;
+    }
+    if (count($template) !== count($value) || array_keys($template) !== array_keys($value)) {
         return false;
     }
     foreach ($template as $key => $childTemplate) {
-        if (!page_data_matches($childTemplate, $value[$key])) {
+        if (!page_data_matches($childTemplate, $value[$key], $flexibleLists)) {
             return false;
         }
     }

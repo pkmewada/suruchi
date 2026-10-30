@@ -24,33 +24,143 @@ function labelFor(key) {
   return String(key).replace(/_/g, ' ').replace(/\b\w/g, char => char.toUpperCase());
 }
 
-function renderValue(key, value, update, allowListChanges) {
+function singularLabel(key) {
+  return labelFor(key).replace(/ies$/, 'y').replace(/s$/, '');
+}
+
+const IMAGE_KEY = /^(image|image\d+|bg_image|hover_image|photo)$/i;
+const HIDDEN_KEYS = ['bg_image'];
+const UPLOAD_ICON = '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 16V4m0 0-4.5 4.5M12 4l4.5 4.5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 15v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg>';
+
+function previewSrc(path) {
+  if (!path) return '';
+  return /^(https?:)?\/\//i.test(path) || path.startsWith('/') || path.startsWith('data:') ? path : '../' + path;
+}
+
+function blankCopy(value) {
+  if (Array.isArray(value)) return value.length ? [blankCopy(value[0])] : [];
+  if (value !== null && typeof value === 'object') {
+    return Object.fromEntries(Object.entries(value).map(([childKey, childValue]) => [childKey, blankCopy(childValue)]));
+  }
+  return '';
+}
+
+function renderImageField(key, value, update) {
+  const fieldPage = current.page;
+  const fieldSection = current.section;
+  let path = String(value ?? '');
+
+  const field = make('div', {className: 'field image-field'});
+  field.append(make('label', {textContent: labelFor(key)}));
+  const picker = make('div', {className: 'image-picker'});
+  const thumb = make('button', {type: 'button', className: 'image-thumb', title: 'Click to upload a new photo'});
+  const img = make('img', {alt: ''});
+  const empty = make('span', {className: 'image-empty', textContent: 'No photo'});
+  const badge = make('span', {className: 'image-badge', innerHTML: UPLOAD_ICON});
+  thumb.append(img, empty, badge);
+
+  const meta = make('div', {className: 'image-meta'});
+  const uploadButton = make('button', {type: 'button', className: 'upload-btn', innerHTML: UPLOAD_ICON + '<span>Upload photo</span>'});
+  const status = make('span', {className: 'image-status'});
+  meta.append(uploadButton, status);
+
+  const fileInput = make('input', {type: 'file', accept: 'image/jpeg,image/png,image/webp,image/gif', hidden: true});
+  picker.append(thumb, meta, fileInput);
+  field.append(picker);
+
+  const paint = () => {
+    img.hidden = !path;
+    empty.hidden = Boolean(path);
+    if (path) img.src = previewSrc(path);
+    status.className = 'image-status';
+    status.textContent = path ? path.split('/').pop() : 'Click the icon to add a photo';
+  };
+  img.addEventListener('error', () => { img.hidden = true; empty.hidden = false; });
+
+  const openPicker = () => fileInput.click();
+  thumb.addEventListener('click', openPicker);
+  uploadButton.addEventListener('click', openPicker);
+
+  fileInput.addEventListener('change', async () => {
+    const file = fileInput.files && fileInput.files[0];
+    if (!file) return;
+    if (file.size > 5 * 1024 * 1024) {
+      status.className = 'image-status err';
+      status.textContent = 'Photo is too big (max 5 MB).';
+      fileInput.value = '';
+      return;
+    }
+    picker.classList.add('busy');
+    status.className = 'image-status';
+    status.textContent = 'Uploading...';
+    try {
+      const formData = new FormData();
+      formData.append('image', file);
+      const response = await fetch('../api/home.php?action=upload', {
+        method: 'POST',
+        headers: {'X-CSRF-Token': CSRF},
+        body: formData
+      });
+      const result = await response.json();
+      if (!response.ok || !result.ok) throw new Error(result.error || 'Upload failed');
+      if (/^assets\/images\/uploads\/[A-Za-z0-9][A-Za-z0-9._-]*$/.test(path)) {
+        const sectionKey = cleanupKey(fieldPage, fieldSection);
+        const paths = pendingUploadCleanup.get(sectionKey) || [];
+        paths.push(path);
+        pendingUploadCleanup.set(sectionKey, paths);
+      }
+      path = result.path;
+      update(path);
+      paint();
+      status.className = 'image-status ok';
+      status.textContent = '✓ Photo added. Now press "Save changes".';
+    } catch (error) {
+      status.className = 'image-status err';
+      status.textContent = 'Error: ' + error.message;
+    } finally {
+      picker.classList.remove('busy');
+      fileInput.value = '';
+    }
+  });
+
+  paint();
+  return field;
+}
+
+function renderValue(key, value, update, allowListChanges, parentKey = '') {
   if (Array.isArray(value)) {
+    const itemName = singularLabel(key === 'items' && parentKey ? parentKey : key);
     const box = make('div', {className: 'field'});
-    box.append(make('label', {textContent: labelFor(key)}));
+    box.append(make('label', {textContent: labelFor(key === 'items' && parentKey ? parentKey : key)}));
     const holder = make('div', {className: 'list-grid'});
-    const itemPrototype = value.length ? JSON.parse(JSON.stringify(value[0])) : null;
-    const draw = () => {
+    const itemPrototype = value.length ? blankCopy(value[0]) : '';
+    const draw = focusIndex => {
       holder.replaceChildren();
       value.forEach((item, index) => {
         const singleField = item === null || typeof item !== 'object' || Object.keys(item).length === 1;
         const card = make('div', {className: 'list-item' + (singleField ? ' single-field' : '')});
         const heading = make('div', {className: 'item-head'});
-        heading.append(make('span', {textContent: labelFor(key) + ' ' + (index + 1)}));
+        heading.append(make('span', {className: 'item-number', textContent: itemName + ' ' + (index + 1)}));
         const actions = make('div', {className: 'item-actions'});
-        const action = (text, className, handler) => {
-          const button = make('button', {type: 'button', textContent: text, className: 'btn sm ' + className});
+        const action = (text, className, title, handler) => {
+          const button = make('button', {type: 'button', textContent: text, title, className: 'btn sm ' + className});
+          button.setAttribute('aria-label', title);
           button.addEventListener('click', handler);
           actions.append(button);
         };
-        if (allowListChanges && index > 0) action('↑', 'light', () => { [value[index - 1], value[index]] = [value[index], value[index - 1]]; draw(); });
-        if (allowListChanges && index < value.length - 1) action('↓', 'light', () => { [value[index + 1], value[index]] = [value[index], value[index + 1]]; draw(); });
-        if (allowListChanges) action('Remove', 'danger', () => { value.splice(index, 1); draw(); });
+        if (allowListChanges && index > 0) action('↑', 'light', 'Move up', () => { [value[index - 1], value[index]] = [value[index], value[index - 1]]; draw(); });
+        if (allowListChanges && index < value.length - 1) action('↓', 'light', 'Move down', () => { [value[index + 1], value[index]] = [value[index], value[index + 1]]; draw(); });
+        if (allowListChanges && value.length > 1) action('✕ Remove', 'danger', 'Remove ' + itemName.toLowerCase(), () => {
+          if (!confirm('Remove ' + itemName + ' ' + (index + 1) + '?')) return;
+          value.splice(index, 1);
+          draw();
+        });
         heading.append(actions);
         card.append(heading);
         if (item !== null && typeof item === 'object') {
           Object.entries(item).forEach(([childKey, childValue]) => {
-            card.append(renderValue(childKey, childValue, next => { item[childKey] = next; }, allowListChanges));
+            if (HIDDEN_KEYS.includes(childKey)) return;
+            card.append(renderValue(childKey, childValue, next => { item[childKey] = next; }, allowListChanges, key));
           });
         } else {
           const input = make('input', {type: 'text', value: item ?? ''});
@@ -58,17 +168,26 @@ function renderValue(key, value, update, allowListChanges) {
           card.append(input);
         }
         holder.append(card);
+        if (index === focusIndex) {
+          requestAnimationFrame(() => {
+            card.scrollIntoView({behavior: 'smooth', block: 'center'});
+            const first = card.querySelector('input[type=text], textarea');
+            if (first) first.focus({preventScroll: true});
+          });
+        }
       });
+      if (allowListChanges) {
+        const add = make('button', {type: 'button', className: 'add-item', innerHTML: '<span aria-hidden="true">+</span>'});
+        add.append(make('strong', {textContent: 'Add new ' + itemName.toLowerCase()}));
+        add.addEventListener('click', () => {
+          value.push(JSON.parse(JSON.stringify(itemPrototype)));
+          update(value);
+          draw(value.length - 1);
+        });
+        holder.append(add);
+      }
     };
     box.append(holder);
-    if (allowListChanges) {
-      const add = make('button', {type: 'button', textContent: 'Add ' + labelFor(key).replace(/s$/, ''), className: 'btn light'});
-      add.addEventListener('click', () => {
-        value.push(itemPrototype !== null && typeof itemPrototype === 'object' ? JSON.parse(JSON.stringify(itemPrototype)) : '');
-        draw();
-      });
-      box.append(add);
-    }
     draw();
     return box;
   }
@@ -78,10 +197,15 @@ function renderValue(key, value, update, allowListChanges) {
     group.append(make('legend', {textContent: labelFor(key)}));
     const fields = make('div', {className: 'group-fields'});
     Object.entries(value).forEach(([childKey, childValue]) => {
-      fields.append(renderValue(childKey, childValue, next => { value[childKey] = next; update(value); }, allowListChanges));
+      if (HIDDEN_KEYS.includes(childKey)) return;
+      fields.append(renderValue(childKey, childValue, next => { value[childKey] = next; update(value); }, allowListChanges, key));
     });
     group.append(fields);
     return group;
+  }
+
+  if (IMAGE_KEY.test(key)) {
+    return renderImageField(key, value, update);
   }
 
   const field = make('div', {className: 'field'});
@@ -92,46 +216,6 @@ function renderValue(key, value, update, allowListChanges) {
     : make('input', {type: 'text', value: text});
   input.addEventListener('input', () => update(input.value));
   field.append(input);
-  if (/^(image|image\d+|bg_image|hover_image|photo)$/i.test(key)) {
-    const fieldPage = current.page;
-    const fieldSection = current.section;
-    const controls = make('div', {className: 'upload-controls'});
-    const upload = make('input', {type: 'file', accept: 'image/jpeg,image/png,image/webp,image/gif'});
-    const uploadButton = make('button', {type: 'button', textContent: 'Upload image', className: 'btn light sm'});
-    const uploadStatus = make('span', {className: 'hint'});
-    uploadButton.addEventListener('click', async () => {
-      if (!upload.files || !upload.files[0]) {
-        uploadStatus.textContent = 'Choose an image first.';
-        return;
-      }
-      uploadStatus.textContent = 'Uploading...';
-      try {
-        const formData = new FormData();
-        formData.append('image', upload.files[0]);
-        const response = await fetch('../api/home.php?action=upload', {
-          method: 'POST',
-          headers: {'X-CSRF-Token': CSRF},
-          body: formData
-        });
-        const result = await response.json();
-        if (!response.ok || !result.ok) throw new Error(result.error || 'Upload failed');
-        const replacedPath = input.value;
-        if (/^assets\/images\/uploads\/[A-Za-z0-9][A-Za-z0-9._-]*$/.test(replacedPath)) {
-          const sectionKey = cleanupKey(fieldPage, fieldSection);
-          const paths = pendingUploadCleanup.get(sectionKey) || [];
-          paths.push(replacedPath);
-          pendingUploadCleanup.set(sectionKey, paths);
-        }
-        input.value = result.path;
-        update(result.path);
-        uploadStatus.textContent = 'Uploaded. Save changes to keep it and remove the previous upload.';
-      } catch (error) {
-        uploadStatus.textContent = 'Error: ' + error.message;
-      }
-    });
-    controls.append(upload, uploadButton, uploadStatus);
-    field.append(controls);
-  }
   return field;
 }
 
@@ -143,7 +227,8 @@ function show(page, section) {
   const form = $('#form');
   form.replaceChildren();
   const card = make('div', {className: 'card'});
-  card.append(renderValue(section, DATA[page][section], updated => { DATA[page][section] = updated; }, page === 'home'));
+  const allowListChanges = page === 'home' || page === 'product';
+  card.append(renderValue(section, DATA[page][section], updated => { DATA[page][section] = updated; }, allowListChanges));
   form.append(card);
   document.querySelectorAll('.section-link').forEach(button => {
     button.classList.toggle('active', button.dataset.page === page && button.dataset.section === section);

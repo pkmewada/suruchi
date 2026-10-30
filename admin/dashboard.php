@@ -32,7 +32,7 @@ $pageLabels = [
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Dashboard | Suruchi Creation</title>
-<link rel="stylesheet" href="../assets/css/dashboard.css?v=20261030">
+<link rel="stylesheet" href="../assets/css/dashboard.css?v=20261030b">
 
 </head>
 <body>
@@ -78,7 +78,7 @@ $pageLabels = [
   </main>
 </div>
 <script type="application/json" id="dashboard-data"><?= json_encode(['csrf' => $_SESSION['csrf_token'], 'data' => $data, 'pageLabels' => $pageLabels], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?></script>
-<script src="../assets/js/dashboard.js?v=20261029" defer></script>
+<script src="../assets/js/dashboard.js?v=20261030b" defer></script>
 
 </body>
 </html>
